@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iamoros- <iamoros-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/13 23:11:50 by iamoros-          #+#    #+#             */
-/*   Updated: 2022/05/14 19:54:40 by iamoros-         ###   ########.fr       */
+/*   Created: 2022/05/19 15:56:17 by iamoros-          #+#    #+#             */
+/*   Updated: 2022/05/19 16:20:41 by iamoros-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_tolower(int c)
+#include "libft.h"
+
+char *ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	if (c >= 65 && c <= 90)
-	{
-		return (c + 32);
-	}
-	return (c);
+	
 }

@@ -1,20 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iamoros- <iamoros-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/13 23:11:50 by iamoros-          #+#    #+#             */
-/*   Updated: 2022/05/14 19:54:40 by iamoros-         ###   ########.fr       */
+/*   Created: 2022/05/18 17:32:01 by iamoros-          #+#    #+#             */
+/*   Updated: 2022/05/18 21:21:29 by iamoros-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_tolower(int c)
+#include "libft.h"
+
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	if (c >= 65 && c <= 90)
-	{
-		return (c + 32);
-	}
-	return (c);
+	int		start;
+	int		end;
+	char	*dst;
+
+	start = 0;
+	end = ft_strlen(s1) - 1;
+	while (s1[start] && ft_strchr(set, s1[start]))
+		start++;
+	while (s1[end] && ft_strchr(set, s1[end]))
+		end--;
+	end = end - start + 1;
+	dst = ft_substr(s1, start, end);
+	return (dst);
 }

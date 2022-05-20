@@ -1,20 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iamoros- <iamoros-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/13 23:11:50 by iamoros-          #+#    #+#             */
-/*   Updated: 2022/05/14 19:54:40 by iamoros-         ###   ########.fr       */
+/*   Created: 2022/05/17 15:30:53 by iamoros-          #+#    #+#             */
+/*   Updated: 2022/05/19 01:26:04 by iamoros-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_tolower(int c)
+#include "libft.h"
+
+void	*ft_calloc(size_t count, size_t size)
 {
-	if (c >= 65 && c <= 90)
+	int		i;
+	char	*str;
+
+	i = 0;
+	str = (char *)malloc((count * size) * sizeof(char));
+	if (!str)
+		return (0);
+	while (i < count * size)
 	{
-		return (c + 32);
+		str[i] = 0;
+		i++;
 	}
-	return (c);
+	return (str);
 }
