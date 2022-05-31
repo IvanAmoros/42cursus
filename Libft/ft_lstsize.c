@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iamoros- <iamoros-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/10 16:29:11 by iamoros-          #+#    #+#             */
-/*   Updated: 2022/05/30 22:33:54 by iamoros-         ###   ########.fr       */
+/*   Created: 2022/05/26 18:15:33 by iamoros-          #+#    #+#             */
+/*   Updated: 2022/05/28 13:16:03 by iamoros-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isprint(int c)
+int	ft_lstsize(t_list *lst)
 {
-	if (c >= 32 && c <= 126)
-		return (1);
-	return (0);
+	int	i;
+
+	i = 0;
+	while (lst != NULL)
+	{
+		lst = lst->next;
+		i++;
+	}
+	return (i);
 }

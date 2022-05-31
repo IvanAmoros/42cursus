@@ -1,20 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iamoros- <iamoros-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/10 16:29:11 by iamoros-          #+#    #+#             */
-/*   Updated: 2022/05/30 22:33:54 by iamoros-         ###   ########.fr       */
+/*   Created: 2022/05/29 23:26:59 by iamoros-          #+#    #+#             */
+/*   Updated: 2022/05/30 00:23:57 by iamoros-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isprint(int c)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	if (c >= 32 && c <= 126)
-		return (1);
-	return (0);
+	t_list	*new;
+	t_list	*temp;
+	t_list	*sec;
+
+	new = NULL;
+	if (!lst)
+		return (0);
+	while (lst != NULL)
+	{
+		sec = f(lst->content);
+		temp = ft_lstnew(sec);
+		if (!temp)
+		{
+			del(sec);
+			ft_lstclear(&temp, del);
+		}
+		ft_lstadd_back(&new, temp);
+		lst = lst->next;
+	}
+	return (new);
 }

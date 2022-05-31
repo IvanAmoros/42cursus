@@ -6,7 +6,7 @@
 /*   By: iamoros- <iamoros-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 17:32:01 by iamoros-          #+#    #+#             */
-/*   Updated: 2022/05/18 21:21:29 by iamoros-         ###   ########.fr       */
+/*   Updated: 2022/05/29 21:52:52 by iamoros-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	end = ft_strlen(s1) - 1;
 	while (s1[start] && ft_strchr(set, s1[start]))
 		start++;
-	while (s1[end] && ft_strchr(set, s1[end]))
+	while (ft_strchr(set, s1[end]))
 		end--;
 	end = end - start + 1;
 	dst = ft_substr(s1, start, end);

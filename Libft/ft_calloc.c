@@ -6,7 +6,7 @@
 /*   By: iamoros- <iamoros-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 15:30:53 by iamoros-          #+#    #+#             */
-/*   Updated: 2022/05/19 01:26:04 by iamoros-         ###   ########.fr       */
+/*   Updated: 2022/05/29 19:37:56 by iamoros-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_calloc(size_t count, size_t size)
 {
-	int		i;
+	size_t	i;
 	char	*str;
 
 	i = 0;
