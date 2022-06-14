@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   ft_printhexa.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iamoros- <iamoros-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/29 21:15:38 by iamoros-          #+#    #+#             */
-/*   Updated: 2022/06/07 20:36:50 by iamoros-         ###   ########.fr       */
+/*   Created: 2022/06/13 15:26:04 by iamoros-          #+#    #+#             */
+/*   Updated: 2022/06/13 16:09:09 by iamoros-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../ft_printf.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+void	ft_printhexa(int *size, unsigned int nb, char *base)
 {
-	t_list	*temp;
-	t_list	*sec;
+	int		digit;
+	int		base_len;
 
-	temp = *lst;
-	while (temp != NULL)
+	base_len = 16;
+	if(nb == 0)
 	{
-		del(temp->content);
-		sec = temp->next;
-		free(temp);
-		temp = sec;
+		*size += write(1, "0", 1);
+		return ;
 	}
-	*lst = NULL;
+	digit = (nb % base_len);
+	nb /= base_len;
+	if(nb != 0)
+		ft_printhexa(size, nb, "0123456789abcdef");
+	*size += write(1, &base[digit], 1);
 }

@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   ft_printpercent.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iamoros- <iamoros-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/29 21:15:38 by iamoros-          #+#    #+#             */
-/*   Updated: 2022/06/07 20:36:50 by iamoros-         ###   ########.fr       */
+/*   Created: 2022/06/08 13:21:41 by iamoros-          #+#    #+#             */
+/*   Updated: 2022/06/08 20:01:13 by iamoros-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../ft_printf.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+void	ft_printpercent(int *size, char chstr)
 {
-	t_list	*temp;
-	t_list	*sec;
-
-	temp = *lst;
-	while (temp != NULL)
-	{
-		del(temp->content);
-		sec = temp->next;
-		free(temp);
-		temp = sec;
-	}
-	*lst = NULL;
+	write(1, &chstr, 1);
+	*size += 1;
 }

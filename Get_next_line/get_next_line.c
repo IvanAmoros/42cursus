@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iamoros- <iamoros-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/29 21:15:38 by iamoros-          #+#    #+#             */
-/*   Updated: 2022/06/07 20:36:50 by iamoros-         ###   ########.fr       */
+/*   Created: 2022/06/13 22:00:55 by iamoros-          #+#    #+#             */
+/*   Updated: 2022/06/13 22:19:23 by iamoros-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "get_next_line.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+char	*get_next_line(int fd)
 {
-	t_list	*temp;
-	t_list	*sec;
 
-	temp = *lst;
-	while (temp != NULL)
-	{
-		del(temp->content);
-		sec = temp->next;
-		free(temp);
-		temp = sec;
-	}
-	*lst = NULL;
 }

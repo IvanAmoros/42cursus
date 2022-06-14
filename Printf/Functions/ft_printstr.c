@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   ft_printstr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iamoros- <iamoros-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/29 21:15:38 by iamoros-          #+#    #+#             */
-/*   Updated: 2022/06/07 20:36:50 by iamoros-         ###   ########.fr       */
+/*   Created: 2022/06/07 17:42:02 by iamoros-          #+#    #+#             */
+/*   Updated: 2022/06/09 02:02:22 by iamoros-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../ft_printf.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+void	ft_printstr(int *size, char *args)
 {
-	t_list	*temp;
-	t_list	*sec;
+	int		t;
+	char	*strnull;
 
-	temp = *lst;
-	while (temp != NULL)
+	t = 0;
+	strnull = "(null)";
+	if (args == NULL)
 	{
-		del(temp->content);
-		sec = temp->next;
-		free(temp);
-		temp = sec;
+		write(1, strnull, 6);
+		*size += 6;
 	}
-	*lst = NULL;
+	else
+	{
+		while (args[t])
+		{
+			write(1, &args[t], 1);
+			*size += 1;
+			t++;
+		}
+	}
 }

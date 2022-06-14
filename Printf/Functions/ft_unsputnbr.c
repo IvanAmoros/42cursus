@@ -1,29 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   ft_unsputnbr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iamoros- <iamoros-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/29 21:15:38 by iamoros-          #+#    #+#             */
-/*   Updated: 2022/06/07 20:36:50 by iamoros-         ###   ########.fr       */
+/*   Created: 2022/06/09 20:41:14 by iamoros-          #+#    #+#             */
+/*   Updated: 2022/06/13 15:13:25 by iamoros-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../ft_printf.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+void	ft_unsputnbr(int *size, unsigned int n)
 {
-	t_list	*temp;
-	t_list	*sec;
+	char			numchar;
+	int				count;
+	int				divisor;
+	unsigned int	nb;
 
-	temp = *lst;
-	while (temp != NULL)
+	count = 0;
+	divisor = 1;
+	nb = n;
+	*size += 1;
+	while (n >= 10)
 	{
-		del(temp->content);
-		sec = temp->next;
-		free(temp);
-		temp = sec;
+		n = n / 10;
+		divisor = divisor * 10;
+		*size += 1;
 	}
-	*lst = NULL;
+	while (divisor >= 1)
+	{
+		numchar = nb / divisor + '0';
+		write(1, &numchar, 1);
+		nb = nb % divisor;
+		divisor = divisor / 10;
+	}
 }

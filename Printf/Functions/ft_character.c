@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   ft_character.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iamoros- <iamoros-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/29 21:15:38 by iamoros-          #+#    #+#             */
-/*   Updated: 2022/06/07 20:36:50 by iamoros-         ###   ########.fr       */
+/*   Created: 2022/06/07 17:40:52 by iamoros-          #+#    #+#             */
+/*   Updated: 2022/06/08 20:00:04 by iamoros-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../ft_printf.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+void	ft_character(int *size, int args)
 {
-	t_list	*temp;
-	t_list	*sec;
+	char	c;
 
-	temp = *lst;
-	while (temp != NULL)
-	{
-		del(temp->content);
-		sec = temp->next;
-		free(temp);
-		temp = sec;
-	}
-	*lst = NULL;
+	c = (char)args;
+	write(1, &c, 1);
+	*size += 1;
 }
