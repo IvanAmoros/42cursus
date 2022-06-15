@@ -6,63 +6,49 @@
 /*   By: iamoros- <iamoros-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 19:33:21 by iamoros-          #+#    #+#             */
-/*   Updated: 2022/06/13 20:58:54 by iamoros-         ###   ########.fr       */
+/*   Updated: 2022/06/15 19:22:36 by iamoros-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
-/*
-void ft_calc(int *size, unsigned long long nb, char *base)
+#include "ft_printf.h"
+
+static int	ft_continue_p(int *size, unsigned long long nb, char *base)
 {
 	int		digit;
 	int		base_len;
 
 	base_len = 16;
-	if(nb == 0)
-	{
-		*size += write(1, "0", 1);
-		return ;
-	}
-	digit = (nb % base_len);
-	nb /= base_len;
-	if(nb != 0)
-		ft_calc(size, nb, "0123456789abcdef");
 	if (nb == 0)
 	{
-		*size += 2;
-		write(1, "0x", 1);
-	}
-	*size += write(1, &base[digit], 1);
-}*/
-
-void	ft_continue_p(int *size, unsigned long long nb, char *base)
-{
-	int		digit;
-	int		base_len;
-
-	base_len = 16;
-	if(nb == 0)
-	{
-		*size += write(1, "0", 1);
-		return ;
+		*size += 1;
+		if (write(1, "0", 1) != 1)
+			*size = -1;
+		return (0);
 	}
 	digit = (nb % base_len);
 	nb /= base_len;
-	if(nb != 0)
+	if (nb != 0)
 		ft_continue_p(size, nb, "0123456789abcdef");
-	*size += write(1, &base[digit], 1);
+	*size += 1;
+	if (write(1, &base[digit], 1) != 1)
+		return (*size = -1);
+	return (0);
 }
 
-void	ft_pointers(int *size, unsigned long long nb, char *base)
+int	ft_pointers(int *size, unsigned long long nb, char *base)
 {
 	if (!nb)
 	{
-		*size += write(1, "0x0", 3);
+		*size += 3;
+		if (write(1, "0x0", 3) != 3)
+			return (*size = -1);
 	}
 	else
 	{
-		*size += write(1, "0x", 2);
+		*size += 2;
+		if (write(1, "0x", 2) != 2)
+			return (*size = -1);
 		ft_continue_p(size, nb, base);
 	}
-		//ft_calc(size, nb, base);
+	return (0);
 }

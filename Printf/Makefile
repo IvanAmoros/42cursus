@@ -6,7 +6,7 @@
 #    By: iamoros- <iamoros-@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/10 13:36:17 by iamoros-          #+#    #+#              #
-#    Updated: 2022/06/13 20:20:10 by iamoros-         ###   ########.fr        #
+#    Updated: 2022/06/15 18:23:37 by iamoros-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,26 +19,29 @@ SRC = ft_printf.c \
 	Functions/ft_printstr.c \
 	Functions/ft_unsputnbr.c \
 	Functions/ft_printhexa.c \
-	Functions/ft_printmhexa.c \
 	Functions/ft_pointers.c
-RM = rm -f
 OBJ = $(SRC:.c=.o)
-DEPS = ft_printf.h
-CFLAGS = -Wall -Werror -Wextra
+DEPS = $(SRC:.c=.d)
+HEAD = ft_printf.h
+CFLAGS = -Wall -Werror -Wextra -MMD
 
-%.o : %.c $(DEPS)
-	cc $(CFLAGS) -c $< -o $@
+%.o : %.c 
+	$(CC) $(CFLAGS) -I ./ -c $< -o $@
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(DEPS)
-	ar -crs $@ $^
+-include $(DEPS)
+$(NAME): $(OBJ) 
+	ar -crs $@ $(OBJ)
 
 clean:
-	$(RM) $(OBJ)
+	@$(RM) $(OBJ) 
+	@$(RM) $(DEPS)
+	@echo You have cleaned all the .o/.d
 
 fclean: clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
+	@echo and also .a
 
 re: fclean all
 

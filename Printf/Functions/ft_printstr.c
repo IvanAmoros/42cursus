@@ -6,13 +6,13 @@
 /*   By: iamoros- <iamoros-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 17:42:02 by iamoros-          #+#    #+#             */
-/*   Updated: 2022/06/09 02:02:22 by iamoros-         ###   ########.fr       */
+/*   Updated: 2022/06/15 20:44:33 by iamoros-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "ft_printf.h"
 
-void	ft_printstr(int *size, char *args)
+int	ft_printstr(int *size, char *args)
 {
 	int		t;
 	char	*strnull;
@@ -21,16 +21,19 @@ void	ft_printstr(int *size, char *args)
 	strnull = "(null)";
 	if (args == NULL)
 	{
-		write(1, strnull, 6);
+		if (write(1, strnull, 6) != 6)
+			return (*size = -1);
 		*size += 6;
 	}
 	else
 	{
 		while (args[t])
 		{
-			write(1, &args[t], 1);
+			if (write(1, &args[t], 1) != 1)
+				return (*size = -1);
 			*size += 1;
 			t++;
 		}
 	}
+	return (0);
 }

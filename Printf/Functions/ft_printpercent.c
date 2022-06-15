@@ -6,14 +6,15 @@
 /*   By: iamoros- <iamoros-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 13:21:41 by iamoros-          #+#    #+#             */
-/*   Updated: 2022/06/08 20:01:13 by iamoros-         ###   ########.fr       */
+/*   Updated: 2022/06/15 20:39:58 by iamoros-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "ft_printf.h"
 
 void	ft_printpercent(int *size, char chstr)
 {
-	write(1, &chstr, 1);
 	*size += 1;
+	if (write(1, &chstr, 1) != 1)
+		*size = -1;
 }

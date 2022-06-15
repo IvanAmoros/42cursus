@@ -6,17 +6,18 @@
 /*   By: iamoros- <iamoros-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 17:40:52 by iamoros-          #+#    #+#             */
-/*   Updated: 2022/06/08 20:00:04 by iamoros-         ###   ########.fr       */
+/*   Updated: 2022/06/15 18:35:40 by iamoros-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "ft_printf.h"
 
 void	ft_character(int *size, int args)
 {
 	char	c;
 
 	c = (char)args;
-	write(1, &c, 1);
 	*size += 1;
+	if (write(1, &c, 1) != 1)
+		*size = -1;
 }

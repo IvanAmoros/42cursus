@@ -6,20 +6,18 @@
 /*   By: iamoros- <iamoros-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 20:41:14 by iamoros-          #+#    #+#             */
-/*   Updated: 2022/06/13 15:13:25 by iamoros-         ###   ########.fr       */
+/*   Updated: 2022/06/15 19:52:05 by iamoros-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "ft_printf.h"
 
-void	ft_unsputnbr(int *size, unsigned int n)
+int	ft_unsputnbr(int *size, unsigned int n)
 {
 	char			numchar;
-	int				count;
 	int				divisor;
 	unsigned int	nb;
 
-	count = 0;
 	divisor = 1;
 	nb = n;
 	*size += 1;
@@ -32,8 +30,10 @@ void	ft_unsputnbr(int *size, unsigned int n)
 	while (divisor >= 1)
 	{
 		numchar = nb / divisor + '0';
-		write(1, &numchar, 1);
+		if (write(1, &numchar, 1) != 1)
+			return (*size = -1);
 		nb = nb % divisor;
 		divisor = divisor / 10;
 	}
+	return (0);
 }
