@@ -6,7 +6,7 @@
 #    By: iamoros- <iamoros-@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/10 13:36:17 by iamoros-          #+#    #+#              #
-#    Updated: 2022/05/29 23:27:17 by iamoros-         ###   ########.fr        #
+#    Updated: 2022/06/15 15:52:26 by iamoros-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,8 +26,7 @@ BONUS_OBJ = $(BONUS:.c=.o)
 DEPS = libft.h
 CFLAGS = -Wall -Werror -Wextra
 
-%.o : %.c $(DEPS)
-	cc $(CFLAGS) -c $< -o $@
+
 
 all: $(NAME)
 

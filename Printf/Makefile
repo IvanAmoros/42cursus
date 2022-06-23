@@ -6,7 +6,7 @@
 #    By: iamoros- <iamoros-@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/10 13:36:17 by iamoros-          #+#    #+#              #
-#    Updated: 2022/06/15 18:23:37 by iamoros-         ###   ########.fr        #
+#    Updated: 2022/06/23 20:47:22 by iamoros-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ CFLAGS = -Wall -Werror -Wextra -MMD
 all: $(NAME)
 
 -include $(DEPS)
-$(NAME): $(OBJ) 
+$(NAME): $(OBJ)
 	ar -crs $@ $(OBJ)
 
 clean:

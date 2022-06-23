@@ -6,7 +6,7 @@
 /*   By: iamoros- <iamoros-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 19:00:24 by iamoros-          #+#    #+#             */
-/*   Updated: 2022/05/25 23:53:17 by iamoros-         ###   ########.fr       */
+/*   Updated: 2022/06/15 19:44:52 by iamoros-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,9 @@ static int	ft_negative(int n, int fd)
 void	ft_putnbr_fd(int n, int fd)
 {
 	char	numchar;
-	int		count;
 	int		divisor;
 	int		nb;
 
-	count = 0;
 	divisor = 1;
 	n = ft_negative(n, fd);
 	if (n == -2147483648)
