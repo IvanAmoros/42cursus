@@ -6,12 +6,12 @@
 /*   By: iamoros- <iamoros-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 22:00:55 by iamoros-          #+#    #+#             */
-/*   Updated: 2022/06/29 16:09:24 by iamoros-         ###   ########.fr       */
+/*   Updated: 2022/06/30 17:22:22 by iamoros-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-//#define BUFFER_SIZE 1
+#define BUFFER_SIZE 5
 
 /*Este se encarga de crear u nuevo storage en base al primero, pero que no
 incluya la primera linea, ya que esta ya la hemos devuelta*/
@@ -19,17 +19,24 @@ char	*clean_storage(char *storage)
 {
 	char	*new_storage;
 	int		i;
+	int		p;
 
 	i = 0;
-	while (storage[i] != '\n' && storage[i] != '\0')
+	p = 0;
+	while (storage[i] && storage[i] != '\n')
 		i++;
-	if (storage[i] == '\0')
+	if (!storage[i])
 	{
 		free(storage);
 		return (NULL);
 	}
+	new_storage = malloc(sizeof(char) * (ft_strlen(storage) - i + 1));
+	if (!new_storage)
+		return (NULL);
 	i++;
-	new_storage = ft_substr(storage, i, ft_strlen(storage) - i);
+	while (storage[i])
+		new_storage[p++] = storage[i++];
+	new_storage[p] = '\0';
 	free(storage);
 	return (new_storage);
 }
@@ -42,14 +49,25 @@ char	*get_line(char *storage)
 	size_t	i;
 
 	i = 0;
-	if (storage[0] == '\0')
-	{
-		free(storage);
+	if (!storage[i])
 		return (NULL);
-	}
-	while (storage[i] != '\n' && storage[i] != '\0')
+	while (storage[i] != '\n' && storage[i])
 		i++;
-	line = ft_substr(storage, 0, i);
+	line = malloc(sizeof(char) * (i + 2));
+	if (!line)
+		return (NULL);
+	i = 0;
+	while (storage[i] && storage[i] != '\n')
+	{
+		line[i] = storage[i];
+		i++;
+	}
+	if (storage[i] == '\n')
+	{
+		line[i] = storage[i];
+		i++;
+	}
+	line[i] = '\0';
 	return (line);
 }
 
@@ -62,12 +80,11 @@ char	*fill_storage(int fd, char *storage)
 	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buffer)
 		return (NULL);
-//	buffer[0] = '\0';
 	end = 1;
-	while (!ft_strchr(buffer, '\n') && end > 0)
+	while (!ft_strchr(buffer, '\n') && end != 0)
 	{
 		end = read(fd, buffer, BUFFER_SIZE);
-		if (end == -1 || buffer[0] == '\0')
+		if (end == -1)
 		{
 			free(buffer);
 			return (NULL);
@@ -86,53 +103,35 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-//	if (!storage)
-//		ft_strdup("");
-//	if (!storage || (storage && !ft_strchr(storage, '\n')))
 	storage = fill_storage(fd, storage);
 	if (!storage)
 		return (NULL);
 	line = get_line(storage);
-	if (!line || !line[0])
-	{
-		free(storage);
-		return (NULL);
-	}
 	storage = clean_storage(storage);
-	if (!line || !line[0])
-	{
-		free(storage);
-		return (NULL);
-	}
 	return (line);
 }
-/*
+
 int	main(void)
 {
 	int		fd;
 	char	*test;
-	int		cont;
 
-	cont = 0;
 	fd = open("test.txt", O_RDONLY);
 	test = get_next_line(fd);
-	printf("La linea 1 es: %s\n", test);
-	while (test[cont])
-	{
-		printf("%c", test[cont]);
-		cont++;
-	}
-	printf("%c", test[cont]);
-	printf("%c", test[cont + 1]);
+	printf("La linea 1 es: %s", test);
 	test = get_next_line(fd);
-	printf("La linea 2 es: %s\n", test);
+	printf("La linea 2 es: %s", test);
 	test = get_next_line(fd);
-	printf("La linea 3 es: %s\n", test);
+	printf("La linea 3 es: %s", test);
 	test = get_next_line(fd);
-	printf("La linea 4 es: %s\n", test);
+	printf("La linea 4 es: %s", test);
+	test = get_next_line(fd);
+	printf("La linea 5 es: %s", test);
+	test = get_next_line(fd);
+	printf("La linea 6 es: %s", test);
 	close(fd);
 	return (0);
-}*/
+}
 /*
 archivo original = kjkufduih fsu udfi ufisdu is fdsih\n iusfuh uifhdsiuhfiudiu
 storage  = kjkhdfksf hsj hkdjsh jks hkjsh kdfsh kj\n sdhfdhs 
