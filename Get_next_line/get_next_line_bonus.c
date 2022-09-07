@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iamoros- <iamoros-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/13 22:00:55 by iamoros-          #+#    #+#             */
-/*   Updated: 2022/07/06 14:24:00 by iamoros-         ###   ########.fr       */
+/*   Created: 2022/07/05 20:32:40 by iamoros-          #+#    #+#             */
+/*   Updated: 2022/07/06 14:30:34 by iamoros-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*clean_storage(char *storage)
 {
@@ -74,9 +74,8 @@ char	*fill_storage(int fd, char *storage)
 	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buffer)
 		return (NULL);
-	buffer[0] = '\0';
 	end = 1;
-	while (!ft_strchr(buffer, '\n') && end != 0)
+	while (!ft_strchr(storage, '\n') && end != 0)
 	{
 		end = read(fd, buffer, BUFFER_SIZE);
 		if (end == -1)
@@ -85,8 +84,11 @@ char	*fill_storage(int fd, char *storage)
 			free(storage);
 			return (NULL);
 		}
+		if (end > 0)
+		{
 		buffer[end] = '\0';
 		storage = ft_strjoin(storage, buffer);
+		}
 	}
 	free(buffer);
 	return (storage);
@@ -94,17 +96,17 @@ char	*fill_storage(int fd, char *storage)
 
 char	*get_next_line(int fd)
 {
-	static char	*storage = NULL;
+	static char	*storage[1024];
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	if (!storage)
-		storage = ft_calloc(1, 1);
-	storage = fill_storage(fd, storage);
-	if (!storage)
+	if (!storage[fd])
+		storage[fd] = ft_calloc(1, 1);
+	storage[fd] = fill_storage(fd, storage[fd]);
+	if (!storage[fd])
 		return (NULL);
-	line = get_line(storage);
-	storage = clean_storage(storage);
+	line = get_line(storage[fd]);
+	storage[fd] = clean_storage(storage[fd]);
 	return (line);
 }

@@ -1,41 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iamoros- <iamoros-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/17 20:37:22 by iamoros-          #+#    #+#             */
-/*   Updated: 2022/05/19 18:56:35 by iamoros-         ###   ########.fr       */
+/*   Created: 2022/07/05 20:35:58 by iamoros-          #+#    #+#             */
+/*   Updated: 2022/07/06 14:38:51 by iamoros-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
-char	*ft_strjoin(char const *s1, char const *s2)
-{
-	size_t	i;
-	size_t	s;
-	size_t	len;
-	char	*str;
+# include <stdlib.h>
+# include <unistd.h>
 
-	i = 0;
-	s = ft_strlen(s1) + ft_strlen(s2);
-	len = ft_strlen(s1);
-	str = (char *)malloc((s + 1) * sizeof(char));
-	if (!str)
-		return (0);
-	while (i < len)
-	{
-		str[i] = s1[i];
-		i++;
-	}
-	while (i < s)
-	{
-		str[i] = *s2;
-		i++;
-		s2++;
-	}
-	str[i] = '\0';
-	return (str);
-}
+size_t	ft_strlen(const char *str);
+char	*ft_strjoin(char *s1, char *s2);
+char	*ft_strchr(char *s, int c);
+char	*get_next_line(int fd);
+void	*ft_calloc(size_t count, size_t size);
+
+#endif
