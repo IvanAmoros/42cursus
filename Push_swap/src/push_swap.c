@@ -10,9 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../lib/push_swap.h"
+#include "push_swap.h"
 
-int	main(int argc, char** argv)
+int	main(int argc, char **argv)
 {
+	// t_stack	*stack_a;
+	// t_stack	*stack_b;
+
 	ft_check_args(argc, argv);
 }

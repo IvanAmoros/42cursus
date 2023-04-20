@@ -15,7 +15,16 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include "libft.h"
+# include <stdio.h>
 
-void ft_check_args(int argc, char** argv);
+typedef struct s_stack
+{
+	int				value;
+	int				index;
+	struct s_stack	*next;
+}	t_stack;
+
+void	ft_check_args(int argc, char **argv);
 
 #endif

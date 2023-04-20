@@ -10,22 +10,53 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../lib/push_swap.h"
-#include "libft.h"
+#include "push_swap.h"
 
-void ft_single_arg(char** argv)
+void	ft_check_args2(int argc, char **argv)
 {
-    write(1, argv[1], ft_strlen(argv[1]));
+	int	i;
+	int	j;
+
+	i = 1;
+	j = 0;
+	if (argc < 3)
+	{
+		write(1, "Error\n", 6);
+		exit(EXIT_FAILURE);
+	}
+	while (i < argc)
+	{
+		j = 0;
+		while (argv[i][j] != '\0')
+		{
+			if (!ft_isdigit(argv[i][j]))
+			{
+				write(1, "Error\n", 6);
+				exit(-1);
+			}
+			j++;
+		}
+		i++;
+	}
 }
 
-void ft_check_args(int argc, char** argv)
+void	ft_check_args(int argc, char **argv)
 {
-	if (argc == 2)
-	{
-        ft_single_arg(argv);
-	}
-    else
-    {
+	int	i;
 
+	i = 1;
+	if (argc < 3)
+	{
+		write(1, "Error\n", 6);
+		exit(EXIT_FAILURE);
+	}
+	while (i < argc)
+	{
+		if (!ft_isdigit(ft_atoi(argv[i])))
+		{
+			write(1, "Error\n", 6);
+			exit(EXIT_FAILURE);
+		}
+		i++;
 	}
 }

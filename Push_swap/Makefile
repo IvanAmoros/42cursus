@@ -1,13 +1,17 @@
 NAME = push_swap
 BONUS = push_swap_bonus
 
-LIB_DIR = ./Libft/
-LIB = ${LIB_DIR}libft.a
+LIB_DIR = ./lib/
+
+LIB_FT_DIR = ./Libft/
+LIB_FT = ${LIB_FT_DIR}libft.a
 
 SRC = src/push_swap.c \
 		utils/check_args.c
 
 OBJ_DIR = obj/
+
+INC = -I${LIB_FT_DIR} -I${LIB_DIR}
 
 
 OBJ = ${addprefix ${OBJ_DIR}, ${SRC:.c=.o}}
@@ -24,27 +28,27 @@ RM = rm -rf
 
 ${OBJ_DIR}%.o: %.c Makefile
 	mkdir -p ${dir $@}
-	${CC} -MT $@ -MMD ${CFLAGS} -c $< -o $@
+	${CC} -MT $@ -MMD ${CFLAGS} ${INC} -c $< -o $@
 
 all: makelib ${NAME}
 
 ${NAME}: ${OBJ}
-	${CC} ${CFLAGS} ${XFLAGS} -I ${LIB_DIR} ${OBJ}  -o ${NAME}
+	${CC} ${CFLAGS} ${XFLAGS} ${LIB_FT} ${OBJ}  -o ${NAME}
 
 bonus: makelib ${BONUS}
 
 ${BONUS}: ${OBJ_BNS}
-	${CC} ${CFLAGS} ${OBJ_BNS} ${LIB} -o ${BONUS}
+	${CC} ${CFLAGS} ${OBJ_BNS} ${LIB_FT} -o ${BONUS}
 
 makelib:
-	make -C ${LIB_DIR}
+	make -C ${LIB_FT_DIR}
 
 clean:
 	${RM} ${OBJ_DIR}
 
 fclean: clean
 	${RM} ${NAME}
-	make fclean -C ${LIB_DIR}
+	make fclean -C ${LIB_FT_DIR}
 
 re: fclean all
 

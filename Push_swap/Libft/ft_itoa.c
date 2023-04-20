@@ -53,10 +53,8 @@ static int	ft_size(int n)
 char	*ft_itoa(int n)
 {
 	char	*dst;
-	int		i;
 	int		size;
 
-	i = 0;
 	size = ft_size(n);
 	dst = (char *)malloc((size + 1) * sizeof(char));
 	if (!dst)
