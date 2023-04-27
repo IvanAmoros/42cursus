@@ -7,7 +7,9 @@ LIB_FT_DIR = ./Libft/
 LIB_FT = ${LIB_FT_DIR}libft.a
 
 SRC = src/push_swap.c \
-		utils/check_args.c
+		utils/check_args.c \
+		utils/error.c \
+		utils/stack_functions.c
 
 OBJ_DIR = obj/
 

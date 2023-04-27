@@ -3,60 +3,56 @@
 /*                                                        :::      ::::::::   */
 /*   check_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iamoros- <iamoros-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ivanamoros <ivanamoros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 17:42:22 by iamoros-          #+#    #+#             */
-/*   Updated: 2023/04/14 18:46:12 by iamoros-         ###   ########.fr       */
+/*   Updated: 2023/04/27 15:19:27 by ivanamoros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_check_args2(int argc, char **argv)
+void	is_repeated(long num, char **argv, int i)
 {
-	int	i;
-	int	j;
+	i++;
+	while (argv[i])
+	{
+		if (ft_atoi(argv[i]) == num)
+			ft_error("Error");
+		i++;
+	}
+}
+
+void	correct_values(int argc, char **argv)
+{
+	int		i;
+	size_t	j;
+	size_t	len;
+	long	num;
 
 	i = 1;
-	j = 0;
-	if (argc < 3)
-	{
-		write(1, "Error\n", 6);
-		exit(EXIT_FAILURE);
-	}
 	while (i < argc)
 	{
-		j = 0;
-		while (argv[i][j] != '\0')
+		len = ft_strlen(argv[i]);
+		if ((!ft_isdigit(argv[i][0]) && argv[i][0] != '-' && argv[i][0] != '+'))
+			ft_error("Error");
+		j = 1;
+		while (j < len)
 		{
-			if (!ft_isdigit(argv[i][j]))
-			{
-				write(1, "Error\n", 6);
-				exit(-1);
-			}
-			j++;
+			if (!ft_isdigit(argv[i][j++]))
+				ft_error("Error");
 		}
+		num = ft_atoi(argv[i]);
+		if (num < INT_MIN || num > INT_MAX)
+			ft_error("Error");
+		is_repeated(num, argv, i);
 		i++;
 	}
 }
 
 void	ft_check_args(int argc, char **argv)
 {
-	int	i;
-
-	i = 1;
 	if (argc < 3)
-	{
-		write(1, "Error\n", 6);
-		exit(EXIT_FAILURE);
-	}
-	while (i < argc)
-	{
-		if (!ft_isdigit(ft_atoi(argv[i])))
-		{
-			write(1, "Error\n", 6);
-			exit(EXIT_FAILURE);
-		}
-		i++;
-	}
+		ft_error("Error");
+	correct_values(argc, argv);
 }

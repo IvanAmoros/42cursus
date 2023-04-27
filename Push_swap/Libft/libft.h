@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iamoros- <iamoros-@student.42barcel>       +#+  +:+       +#+        */
+/*   By: ivanamoros <ivanamoros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 13:37:12 by iamoros-          #+#    #+#             */
-/*   Updated: 2022/05/29 23:53:47 by iamoros-         ###   ########.fr       */
+/*   Updated: 2023/04/27 15:22:50 by ivanamoros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 # include <string.h>
 # include <unistd.h>
 
-typedef struct s_list
+typedef struct t_list
 {
 	void			*content;
-	struct s_list	*next;
+	struct t_list	*next;
 }	t_list;
 
 int		ft_isalpha(int c);
@@ -30,7 +30,7 @@ int		ft_isascii(int c);
 int		ft_isprint(int c);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
-int		ft_atoi(const char *str);
+long	ft_atoi(const char *str);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
