@@ -6,7 +6,7 @@
 /*   By: ivanamoros <ivanamoros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 23:17:18 by ivanamoros        #+#    #+#             */
-/*   Updated: 2023/04/27 11:11:03 by ivanamoros       ###   ########.fr       */
+/*   Updated: 2023/07/05 19:14:44 by ivanamoros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_stack	*create_stack(void)
 	return (new_stack);
 }
 
-t_elem	*add_node(t_stack *stack, int value)
+t_elem	*add_node(t_stack *stack, int value, int i)
 {
 	t_elem	*new_elem;
 	t_elem	*temp;
@@ -33,7 +33,7 @@ t_elem	*add_node(t_stack *stack, int value)
 	if (!new_elem)
 		return (NULL);
 	new_elem->value = value;
-	new_elem->index = 0;
+	new_elem->index = i;
 	new_elem->next = NULL;
 	temp = stack->node;
 	if (!temp)
@@ -47,4 +47,28 @@ t_elem	*add_node(t_stack *stack, int value)
 		temp->next = new_elem;
 	}
 	return (new_elem);
+}
+
+int	ft_lstsize_push_swap(t_elem *lst)
+{
+	int	i;
+
+	i = 0;
+	while (lst != NULL)
+	{
+		lst = lst->next;
+		i++;
+	}
+	return (i);
+}
+
+t_elem	*ft_lstlast_push_swap(t_elem *lst)
+{
+	if (!lst)
+		return (NULL);
+	while (lst->next != NULL)
+	{
+		lst = lst->next;
+	}
+	return (lst);
 }

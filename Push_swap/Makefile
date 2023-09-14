@@ -6,9 +6,14 @@ LIB_DIR = ./lib/
 LIB_FT_DIR = ./Libft/
 LIB_FT = ${LIB_FT_DIR}libft.a
 
-SRC = src/push_swap.c \
+SRC =	src/push_swap.c \
+		src/swap.c \
+		src/push.c \
+		src/rotate.c \
+		src/reverse_rotate.c \
 		utils/check_args.c \
 		utils/error.c \
+		utils/utils.c \
 		utils/stack_functions.c
 
 OBJ_DIR = obj/
