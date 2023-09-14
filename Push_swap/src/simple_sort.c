@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   simple_sort.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iamoros- <iamoros-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/05 20:25:28 by ivanamoros        #+#    #+#             */
-/*   Updated: 2023/09/14 21:16:34 by iamoros-         ###   ########.fr       */
+/*   Created: 2023/09/14 18:20:47 by iamoros-          #+#    #+#             */
+/*   Updated: 2023/09/14 21:17:49 by iamoros-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	is_sorted(t_stack **stack)
+void simple_sort(t_stack **stack_a, t_stack **stack_b)
 {
-	t_elem	*head;
-
-	head = *stack;
-	while (head && head->next)
-	{
-		if (head->value > head->next->value)
-			return (0);
-		head = head->next;
-	}
-	return (1);
+    
 }

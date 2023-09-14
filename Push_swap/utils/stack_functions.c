@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_functions.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ivanamoros <ivanamoros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: iamoros- <iamoros-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 23:17:18 by ivanamoros        #+#    #+#             */
-/*   Updated: 2023/07/05 19:14:44 by ivanamoros       ###   ########.fr       */
+/*   Updated: 2023/09/14 21:18:34 by iamoros-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ t_elem	*add_node(t_stack *stack, int value, int i)
 	return (new_elem);
 }
 
-int	ft_lstsize_push_swap(t_elem *lst)
+int	ft_lstsize_push_swap(t_stack *lst)
 {
 	int	i;
 

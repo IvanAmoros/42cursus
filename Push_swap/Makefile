@@ -11,6 +11,7 @@ SRC =	src/push_swap.c \
 		src/push.c \
 		src/rotate.c \
 		src/reverse_rotate.c \
+		src/simple_sort.c \
 		utils/check_args.c \
 		utils/error.c \
 		utils/utils.c \

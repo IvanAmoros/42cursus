@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ivanamoros <ivanamoros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: iamoros- <iamoros-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 20:11:14 by iamoros-          #+#    #+#             */
-/*   Updated: 2023/08/08 18:31:12 by ivanamoros       ###   ########.fr       */
+/*   Updated: 2023/09/14 21:18:07 by iamoros-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ int	ft_init_stack(int argc, char **argv, t_stack **stack_a, t_stack **stack_b)
 	return (0);
 }
 
-static void	ft_sort(t_elem **stack_a, t_elem **stack_b)
+static void	ft_sort(t_stack **stack_a, t_stack **stack_b)
 {
 	if (ft_lstsize_push_swap(*stack_a) <= 5)
 		simple_sort(stack_a, stack_b);
-	else
-		radix_sort(stack_a, stack_b);
+	/*else
+		complex sort*/
 }
 
 int	main(int argc, char **argv)
@@ -49,7 +49,7 @@ int	main(int argc, char **argv)
 	ft_check_args(argc, argv);
 	if (ft_init_stack(argc, argv, &stack_a, &stack_b) == -1)
 		return (-1);
-	if (ft_is_sorted(stack_a))
+	if (is_sorted(stack_a))
 	{
 		free_stack(stack_a);
 		free_stack(stack_b);
