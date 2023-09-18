@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ivanamoros <ivanamoros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: iamoros- <iamoros-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 12:39:05 by ivanamoros        #+#    #+#             */
-/*   Updated: 2023/07/05 18:57:01 by ivanamoros       ###   ########.fr       */
+/*   Updated: 2023/09/15 18:08:07 by iamoros-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	push(t_elem **to_stack, t_elem **from_stack)
+int	push(t_stack **to_stack, t_stack **from_stack)
 {
-	t_elem	*head_to;
-	t_elem	*head_from;
-	t_elem	*tmp;
+	t_stack	*head_to;
+	t_stack	*head_from;
+	t_stack	*tmp;
 
 	if (ft_lstsize_push_swap(*from_stack) == 0)
 		return (-1);
@@ -39,7 +39,7 @@ int	push(t_elem **to_stack, t_elem **from_stack)
 	return (0);
 }
 
-int	pa(t_elem **stack_a, t_elem **stack_b)
+int	pa(t_stack **stack_a, t_stack **stack_b)
 {
 	if (push(stack_a, stack_b) == -1)
 		return (-1);
@@ -47,7 +47,7 @@ int	pa(t_elem **stack_a, t_elem **stack_b)
 	return (0);
 }
 
-int	pb(t_elem **stack_a, t_elem **stack_b)
+int	pb(t_stack **stack_a, t_stack **stack_b)
 {
 	if (push(stack_b, stack_a) == -1)
 		return (-1);

@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ivanamoros <ivanamoros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: iamoros- <iamoros-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 14:58:48 by ivanamoros        #+#    #+#             */
-/*   Updated: 2023/05/13 15:11:02 by ivanamoros       ###   ########.fr       */
+/*   Updated: 2023/09/15 18:08:07 by iamoros-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	swap(t_elem **stack)
+int	swap(t_stack **stack)
 {
-	t_elem	*head;
-	t_elem	*next;
+	t_stack	*head;
+	t_stack	*next;
 	int		tmp_val;
 	int		tmp_index;
 
@@ -34,7 +34,7 @@ int	swap(t_elem **stack)
 	return (0);
 }
 
-int	sa(t_elem **stack_a)
+int	sa(t_stack **stack_a)
 {
 	if (swap(stack_a) == -1)
 		return (-1);
@@ -42,7 +42,7 @@ int	sa(t_elem **stack_a)
 	return (0);
 }
 
-int	sb(t_elem **stack_b)
+int	sb(t_stack **stack_b)
 {
 	if (swap(stack_b) == -1)
 		return (-1);
@@ -50,7 +50,7 @@ int	sb(t_elem **stack_b)
 	return (0);
 }
 
-int	ss(t_elem **stack_a, t_elem **stack_b)
+int	ss(t_stack **stack_a, t_stack **stack_b)
 {
 	if ((ft_lstsize_push_swap(*stack_a) < 2)
 		|| (ft_lstsize_push_swap(*stack_b) < 2))

@@ -31,7 +31,7 @@ DPS_BNS = ${addsuffix .d, ${basename ${OBJ_BNS}}}
 
 
 CFLAGS = -Wall -Wextra -Werror
-XFLAGS = -fsanitize=address -g3
+#XFLAGS = -fsanitize=address -g3
 RM = rm -rf
 
 ${OBJ_DIR}%.o: %.c Makefile

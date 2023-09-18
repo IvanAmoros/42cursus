@@ -6,7 +6,7 @@
 /*   By: iamoros- <iamoros-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 17:44:24 by iamoros-          #+#    #+#             */
-/*   Updated: 2023/09/14 21:16:59 by iamoros-         ###   ########.fr       */
+/*   Updated: 2023/09/18 22:35:30 by iamoros-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,39 +19,32 @@
 # include <stdio.h>
 # include <limits.h>
 
-typedef struct s_elem
+typedef struct s_stack
 {
 	int				value;
 	int				index;
-	struct s_elem	*next;
-}	t_elem;
-
-typedef struct s_stack
-{
-	t_elem	*node;
-	int		size;
+	struct s_stack	*next;
 }	t_stack;
 
 void	ft_check_args(int argc, char **argv);
 void	ft_error(char *error);
-t_stack	*create_stack(void);
-t_elem	*add_node(t_stack *stack, int value, int i);
-t_elem	*ft_lstlast_push_swap(t_elem *lst);
+t_stack	*ft_lstlast_push_swap(t_stack *lst);
 void	stack_error(t_stack *stack_a, t_stack *stack_b);
 void	free_stack(t_stack *stack);
-int		ft_lstsize_push_swap(t_elem *lst);
-int		sa(t_elem **stack_a);
-int		sb(t_elem **stack_b);
-int		ss(t_elem **stack_a, t_elem **stack_b);
-int		pb(t_elem **stack_a, t_elem **stack_b);
-int		pa(t_elem **stack_a, t_elem **stack_b);
-int		ra(t_elem **stack_a);
-int		rb(t_elem **stack_b);
-int		rr(t_elem **stack_a, t_elem **stack_b);
-int		rra(t_elem **stack_a);
-int		rrb(t_elem **stack_b);
-int		rrr(t_elem **stack_a, t_elem **stack_b);
-int		is_sorted(t_stack **stack);
-void	simple_sort(t_stack **stack_a, t_stack **stack_b);
+int		ft_lstsize_push_swap(t_stack *lst);
+int		sa(t_stack **stack_a);
+int		sb(t_stack **stack_b);
+int		ss(t_stack **stack_a, t_stack **stack_b);
+int		pb(t_stack **stack_a, t_stack **stack_b);
+int		pa(t_stack **stack_a, t_stack **stack_b);
+int		ra(t_stack **stack_a);
+int		rb(t_stack **stack_b);
+int		rr(t_stack **stack_a, t_stack **stack_b);
+int		rra(t_stack **stack_a);
+int		rrb(t_stack **stack_b);
+int		rrr(t_stack **stack_a, t_stack **stack_b);
+int		is_sorted(t_stack *stack);
+void	simple_sort(t_stack *stack_a, t_stack *stack_b);
+void	ft_index(t_stack **stack_a);
 
 #endif
