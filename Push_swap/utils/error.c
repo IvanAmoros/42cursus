@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ivanamoros <ivanamoros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: iamoros- <iamoros-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 01:04:46 by ivanamoros        #+#    #+#             */
-/*   Updated: 2023/04/27 11:27:14 by ivanamoros       ###   ########.fr       */
+/*   Updated: 2023/09/18 20:54:53 by iamoros-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,14 @@ void	stack_error(t_stack *stack_a, t_stack *stack_b)
 
 void	free_stack(t_stack *stack)
 {
-	t_elem	*temp_node;
-	t_elem	*temp_next_node;
+	t_stack	*temp_node;
+	t_stack	*temp_next_node;
 
-	temp_node = stack->node;
+	temp_node = stack;
 	while (temp_node)
 	{
 		temp_next_node = temp_node->next;
 		free(temp_node);
 		temp_node = temp_next_node;
 	}
-	free(stack);
 }

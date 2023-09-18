@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ivanamoros <ivanamoros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: iamoros- <iamoros-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 19:05:59 by ivanamoros        #+#    #+#             */
-/*   Updated: 2023/07/05 19:16:08 by ivanamoros       ###   ########.fr       */
+/*   Updated: 2023/09/15 18:08:07 by iamoros-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	rotate(t_elem **stack)
+int	rotate(t_stack **stack)
 {
-	t_elem	*head;
-	t_elem	*tail;
+	t_stack	*head;
+	t_stack	*tail;
 
 	if (ft_lstsize_push_swap(*stack) < 2)
 		return (-1);
@@ -27,7 +27,7 @@ int	rotate(t_elem **stack)
 	return (0);
 }
 
-int	ra(t_elem **stack_a)
+int	ra(t_stack **stack_a)
 {
 	if (rotate(stack_a) == -1)
 		return (-1);
@@ -35,7 +35,7 @@ int	ra(t_elem **stack_a)
 	return (0);
 }
 
-int	rb(t_elem **stack_b)
+int	rb(t_stack **stack_b)
 {
 	if (rotate(stack_b) == -1)
 		return (-1);
@@ -43,7 +43,7 @@ int	rb(t_elem **stack_b)
 	return (0);
 }
 
-int	rr(t_elem **stack_a, t_elem **stack_b)
+int	rr(t_stack **stack_a, t_stack **stack_b)
 {
 	if ((ft_lstsize_push_swap(*stack_a) < 2)
 		|| (ft_lstsize_push_swap(*stack_b) < 2))
