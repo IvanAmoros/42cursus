@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iamoros- <iamoros-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ivanamoros <ivanamoros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 20:11:14 by iamoros-          #+#    #+#             */
-/*   Updated: 2023/09/18 22:36:08 by iamoros-         ###   ########.fr       */
+/*   Updated: 2023/09/19 17:55:32 by ivanamoros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,12 @@
 int	ft_init_stack(int argc, char **argv, t_stack **stack_a)
 {
 	t_stack	*tmp;
-	int	i;
 
-	*stack_a = NULL;
-	i = 0;
 	while (argc > 1)
 	{
 		tmp = malloc(sizeof(t_stack));
 		if (!tmp)
-			return(0);
+			return (0);
 		tmp->value = ft_atoi(argv[argc - 1]);
 		tmp->next = *stack_a;
 		*stack_a = tmp;
@@ -51,17 +48,14 @@ int	main(int argc, char **argv)
 	ft_check_args(argc, argv);
 	if (ft_init_stack(argc, argv, &stack_a) == -1)
 		return (-1);
-	/*if (is_sorted(stack_a))
+	if (is_sorted(stack_a))
 	{
 		free_stack(stack_a);
 		free_stack(stack_b);
 		write(1, "SORTED!!\n", 9);
 		return (0);
-	}*/
+	}
 	ft_sort(stack_a, stack_b);
-
-	//rra(&stack_a);
-
 	write(1, "STACK A:\n", 9);
 	t_stack *tmp_elem_a = stack_a;
 	while (tmp_elem_a != NULL)
