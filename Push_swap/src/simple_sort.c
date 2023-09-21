@@ -6,7 +6,7 @@
 /*   By: ivanamoros <ivanamoros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 18:20:47 by iamoros-          #+#    #+#             */
-/*   Updated: 2023/09/19 17:55:44 by ivanamoros       ###   ########.fr       */
+/*   Updated: 2023/09/21 14:50:08 by ivanamoros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	sort_3(t_stack *stack_a)
 		sa(&stack_a);
 	else if (temp->next->value < temp->value && temp->next->value > temp->next->next->value)
 	{
+		print_stack("\nSTACK A:\n", &stack_a);
 		sa(&stack_a);
 		rra(&stack_a);
 	}

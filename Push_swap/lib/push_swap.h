@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iamoros- <iamoros-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ivanamoros <ivanamoros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 17:44:24 by iamoros-          #+#    #+#             */
-/*   Updated: 2023/09/18 22:35:30 by iamoros-         ###   ########.fr       */
+/*   Updated: 2023/09/21 14:49:25 by ivanamoros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,6 @@ int		rrr(t_stack **stack_a, t_stack **stack_b);
 int		is_sorted(t_stack *stack);
 void	simple_sort(t_stack *stack_a, t_stack *stack_b);
 void	ft_index(t_stack **stack_a);
+void	print_stack(char *tittle, t_stack **stack);
 
 #endif

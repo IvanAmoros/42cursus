@@ -6,7 +6,7 @@
 /*   By: ivanamoros <ivanamoros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 20:11:14 by iamoros-          #+#    #+#             */
-/*   Updated: 2023/09/19 17:55:32 by ivanamoros       ###   ########.fr       */
+/*   Updated: 2023/09/21 14:58:25 by ivanamoros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,19 @@ static void	ft_sort(t_stack *stack_a, t_stack *stack_b)
 {
 	if (ft_lstsize_push_swap(stack_a) <= 5)
 		simple_sort(stack_a, stack_b);
-	/*else
-		complex sort*/
+	//else
+	//	complex sort
+}
+
+void print_stack(char *tittle, t_stack **stack)
+{
+	write(1, tittle, ft_strlen(tittle));
+	t_stack *tmp_elem_a = *stack;
+	while (tmp_elem_a != NULL)
+	{
+		printf("Value: %i Index: %i\n", tmp_elem_a->value, tmp_elem_a->index);
+		tmp_elem_a = tmp_elem_a->next;
+	}
 }
 
 int	main(int argc, char **argv)
@@ -56,20 +67,10 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	ft_sort(stack_a, stack_b);
-	write(1, "STACK A:\n", 9);
-	t_stack *tmp_elem_a = stack_a;
-	while (tmp_elem_a != NULL)
-	{
-		printf("Value: %i Index: %i\n", tmp_elem_a->value, tmp_elem_a->index);
-		tmp_elem_a = tmp_elem_a->next;
-	}
-	write(1, "\nSTACK B:\n", 10);
-	t_stack *tmp_elem_b = stack_b;
-	while (tmp_elem_b != NULL)
-	{
-		printf("Value: %i Index: %i\n", tmp_elem_b->value, tmp_elem_b->index);
-		tmp_elem_b = tmp_elem_b->next;
-	}
+	// rra(&stack_a);
+	print_stack("\nSTACK A:\n", &stack_a);
+	print_stack("\nSTACK B:\n", &stack_b);
+
 	free_stack(stack_a);
 	//free_stack(stack_b);
 	return (0);
