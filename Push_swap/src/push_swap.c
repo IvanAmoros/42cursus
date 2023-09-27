@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iamoros- <iamoros-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ivanamoros <ivanamoros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 20:11:14 by iamoros-          #+#    #+#             */
-/*   Updated: 2023/09/21 19:31:29 by iamoros-         ###   ########.fr       */
+/*   Updated: 2023/09/26 19:56:26 by ivanamoros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,16 +58,14 @@ int	main(int argc, char **argv)
 	ft_check_args(argc, argv);
 	if (ft_init_stack(argc, argv, &stack_a) == -1)
 		return (-1);
-	/*if (is_sorted(stack_a))
+	if (is_sorted(stack_a))
 	{
 		free_stack(stack_a);
 		free_stack(stack_b);
 		write(1, "SORTED!!\n", 9);
 		return (0);
-	}*/
+	}
 	ft_sort(&stack_a, &stack_b);
-	// sa(&stack_a);
-	// rra(&stack_a);
 	print_stack("\nSTACK A:\n", &stack_a);
 	print_stack("\nSTACK B:\n", &stack_b);
 	free_stack(stack_a);

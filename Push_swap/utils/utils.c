@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iamoros- <iamoros-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ivanamoros <ivanamoros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 20:25:28 by ivanamoros        #+#    #+#             */
-/*   Updated: 2023/09/21 23:05:18 by iamoros-         ###   ########.fr       */
+/*   Updated: 2023/09/26 19:56:50 by ivanamoros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,8 @@ int	is_sorted(t_stack *stack)
 	head = stack;
 	while (head && head->next)
 	{
-		printf("VALUE: %i", head->value);
 		if (head->value > head->next->value)
-		{	
-			
+		{
 			return (0);
 		}
 		head = head->next;
@@ -32,8 +30,8 @@ int	is_sorted(t_stack *stack)
 
 void	ft_index(t_stack **stack_a)
 {
-	t_stack *first_temp;
-	t_stack *second_temp;
+	t_stack	*first_temp;
+	t_stack	*second_temp;
 	int	i;
 
 
@@ -51,7 +49,7 @@ void	ft_index(t_stack **stack_a)
 		}
 		first_temp = first_temp->next;
 	}
-	
+
 }
 
 void	smallest_to_b(t_stack **stack_a, t_stack **stack_b)
@@ -79,7 +77,7 @@ int	find_smallest(t_stack **stack)
 			temp_index = temp->index;
 			smallest_position = position;
 		}
-		
+
 		position++;
 		temp =temp->next;
 	}

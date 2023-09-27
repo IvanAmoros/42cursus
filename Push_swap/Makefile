@@ -30,7 +30,7 @@ OBJ_BNS = ${addprefix ${OBJ_DIR}, ${SRC_BNS:.c=.o}}
 DPS_BNS = ${addsuffix .d, ${basename ${OBJ_BNS}}}
 
 
-CFLAGS = -Wall -Wextra -Werror
+#CFLAGS = -Wall -Wextra -Werror
 #XFLAGS = -fsanitize=address -g3
 RM = rm -rf
 
