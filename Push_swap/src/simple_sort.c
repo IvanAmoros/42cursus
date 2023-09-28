@@ -6,7 +6,7 @@
 /*   By: ivanamoros <ivanamoros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 18:20:47 by iamoros-          #+#    #+#             */
-/*   Updated: 2023/09/26 20:00:00 by ivanamoros       ###   ########.fr       */
+/*   Updated: 2023/09/28 15:02:20 by ivanamoros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,22 +37,16 @@ void	sort_3(t_stack **stack_a)
 
 void	sort_4(t_stack **stack_a, t_stack **stack_b)
 {
-	t_stack	*tmp;
-	int		smallest_position;
-	int		i;
+	smallest_to_b(stack_a, stack_b);
+	sort_3(stack_a);
+	pa(stack_a, stack_b);
+}
 
-	tmp = *stack_a;
-	i = 0;
-	smallest_position = find_smallest(stack_a);
-	while (i <= smallest_position)
-	{
-		if (i == smallest_position)
-			pb(&tmp, stack_b);
-		tmp = tmp->next;
-		i++;
-	}
-
-
+void	sort_5(t_stack **stack_a, t_stack **stack_b)
+{
+	smallest_to_b(stack_a, stack_b);
+	sort_4(stack_a, stack_b);
+	pa(stack_a, stack_b);
 }
 
 void	simple_sort(t_stack **stack_a, t_stack **stack_b)
@@ -66,4 +60,6 @@ void	simple_sort(t_stack **stack_a, t_stack **stack_b)
 		sort_3(stack_a);
 	else if (stack_size == 4)
 		sort_4(stack_a, stack_b);
+	else if (stack_size == 5)
+		sort_5(stack_a, stack_b);
 }

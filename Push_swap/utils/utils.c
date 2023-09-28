@@ -6,7 +6,7 @@
 /*   By: ivanamoros <ivanamoros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 20:25:28 by ivanamoros        #+#    #+#             */
-/*   Updated: 2023/09/26 19:56:50 by ivanamoros       ###   ########.fr       */
+/*   Updated: 2023/09/28 14:57:06 by ivanamoros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,27 @@ void	ft_index(t_stack **stack_a)
 
 void	smallest_to_b(t_stack **stack_a, t_stack **stack_b)
 {
-	if (stack_b)
-	{}
-	printf("\n\nSMALLEST POSITION: %i\n\n", find_smallest(stack_a));
+	int		smallest_position;
+
+	smallest_position = find_smallest(stack_a);
+	if (smallest_position < ft_lstsize_push_swap(*stack_a) / 2)
+	{
+		while (smallest_position != 0)
+		{
+			ra(stack_a);
+			smallest_position--;
+		}
+		pb(stack_a, stack_b);
+	}
+	else
+	{
+		while (smallest_position != ft_lstsize_push_swap(*stack_a))
+		{
+			rra(stack_a);
+			smallest_position++;
+		}
+
+	}
 }
 
 int	find_smallest(t_stack **stack)
