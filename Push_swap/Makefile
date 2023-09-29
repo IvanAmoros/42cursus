@@ -15,7 +15,8 @@ SRC =	src/push_swap.c \
 		utils/check_args.c \
 		utils/error.c \
 		utils/utils.c \
-		utils/stack_functions.c
+		utils/stack_functions.c \
+		src/complex_sort.c
 
 OBJ_DIR = obj/
 

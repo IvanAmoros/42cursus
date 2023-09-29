@@ -6,7 +6,7 @@
 /*   By: iamoros- <iamoros-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 01:04:46 by ivanamoros        #+#    #+#             */
-/*   Updated: 2023/09/18 20:54:53 by iamoros-         ###   ########.fr       */
+/*   Updated: 2023/09/28 21:13:39 by iamoros-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_error(char *error)
 {
-	write(1, error, ft_strlen(error));
-	write(1, "\n", 1);
+	write(2, error, ft_strlen(error));
+	//write(2, "\n", 1);
 	exit(EXIT_FAILURE);
 }
 

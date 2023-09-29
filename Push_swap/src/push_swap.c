@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ivanamoros <ivanamoros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: iamoros- <iamoros-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 20:11:14 by iamoros-          #+#    #+#             */
-/*   Updated: 2023/09/26 19:56:26 by ivanamoros       ###   ########.fr       */
+/*   Updated: 2023/09/28 21:47:33 by iamoros-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ static void	ft_sort(t_stack **stack_a, t_stack **stack_b)
 {
 	if (ft_lstsize_push_swap(*stack_a) <= 5)
 		simple_sort(stack_a, stack_b);
-	//else
-	//	complex sort
+	else
+		complex_sort(stack_a, stack_b);
 }
 
 void print_stack(char *tittle, t_stack **stack)
@@ -49,7 +49,7 @@ void print_stack(char *tittle, t_stack **stack)
 }
 
 int	main(int argc, char **argv)
-{
+{ 
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 
@@ -62,7 +62,6 @@ int	main(int argc, char **argv)
 	{
 		free_stack(stack_a);
 		free_stack(stack_b);
-		write(1, "SORTED!!\n", 9);
 		return (0);
 	}
 	ft_sort(&stack_a, &stack_b);

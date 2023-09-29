@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ivanamoros <ivanamoros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: iamoros- <iamoros-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 20:25:28 by ivanamoros        #+#    #+#             */
-/*   Updated: 2023/09/28 14:57:06 by ivanamoros       ###   ########.fr       */
+/*   Updated: 2023/09/28 21:08:40 by iamoros-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,13 @@ void	smallest_to_b(t_stack **stack_a, t_stack **stack_b)
 	int		smallest_position;
 
 	smallest_position = find_smallest(stack_a);
-	if (smallest_position < ft_lstsize_push_swap(*stack_a) / 2)
+	if (smallest_position <= ft_lstsize_push_swap(*stack_a) / 2)
 	{
 		while (smallest_position != 0)
 		{
 			ra(stack_a);
 			smallest_position--;
 		}
-		pb(stack_a, stack_b);
 	}
 	else
 	{
@@ -75,6 +74,7 @@ void	smallest_to_b(t_stack **stack_a, t_stack **stack_b)
 		}
 
 	}
+	pb(stack_a, stack_b);
 }
 
 int	find_smallest(t_stack **stack)
