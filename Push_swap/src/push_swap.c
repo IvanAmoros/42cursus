@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iamoros- <iamoros-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ivanamoros <ivanamoros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 20:11:14 by iamoros-          #+#    #+#             */
-/*   Updated: 2023/09/28 21:47:33 by iamoros-         ###   ########.fr       */
+/*   Updated: 2023/09/30 13:45:14 by ivanamoros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	ft_init_stack(int argc, char **argv, t_stack **stack_a)
 {
 	t_stack	*tmp;
+
 	while (argc > 1)
 	{
 		tmp = malloc(sizeof(t_stack));
@@ -37,10 +38,12 @@ static void	ft_sort(t_stack **stack_a, t_stack **stack_b)
 		complex_sort(stack_a, stack_b);
 }
 
-void print_stack(char *tittle, t_stack **stack)
+void	print_stack(char *tittle, t_stack **stack)
 {
+	t_stack	*tmp_elem_a;
+
+	tmp_elem_a = *stack;
 	write(1, tittle, ft_strlen(tittle));
-	t_stack *tmp_elem_a = *stack;
 	while (tmp_elem_a != NULL)
 	{
 		printf("Value: %i Index: %i\n", tmp_elem_a->value, tmp_elem_a->index);
@@ -49,7 +52,7 @@ void print_stack(char *tittle, t_stack **stack)
 }
 
 int	main(int argc, char **argv)
-{ 
+{
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 

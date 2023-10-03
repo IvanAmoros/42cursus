@@ -6,7 +6,7 @@
 /*   By: ivanamoros <ivanamoros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 18:20:47 by iamoros-          #+#    #+#             */
-/*   Updated: 2023/09/28 15:02:20 by ivanamoros       ###   ########.fr       */
+/*   Updated: 2023/09/30 14:06:59 by ivanamoros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,28 @@
 
 void	sort_3(t_stack **stack_a)
 {
-	t_stack	*tmp;
+	t_stack	*top;
+	t_stack	*middle;
+	t_stack	*bottom;
 
-	tmp = *stack_a;
-	if (tmp->value > tmp->next->value && tmp->value < tmp->next->next->value)
+	top = *stack_a;
+	middle = top->next;
+	bottom = middle->next;
+	if (top->value > middle->value && top->value < bottom ->value)
 		sa(stack_a);
-	else if (tmp->next->value < tmp->value && tmp->next->value > tmp->next->next->value)
+	else if (middle->value < top->value && middle->value > bottom->value)
 	{
 		sa(stack_a);
 		rra(stack_a);
 	}
-	else if (tmp->next->next->value < tmp->value && tmp->next->next->value > tmp->next->value)
+	else if (bottom->value < top->value && bottom->value > middle->value)
 		ra(stack_a);
-	else if (tmp->next->next->value > tmp->value && tmp->next->next->value < tmp->next->value)
+	else if (bottom->value > top->value && bottom->value < middle->value)
 	{
 		sa(stack_a);
 		ra(stack_a);
 	}
-	else if (tmp->value < tmp->next->value && tmp->value > tmp->next->next->value)
+	else if (top->value < middle->value && top->value > bottom->value)
 		rra(stack_a);
 }
 

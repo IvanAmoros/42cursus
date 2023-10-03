@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iamoros- <iamoros-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ivanamoros <ivanamoros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 20:25:28 by ivanamoros        #+#    #+#             */
-/*   Updated: 2023/09/28 21:08:40 by iamoros-         ###   ########.fr       */
+/*   Updated: 2023/10/02 14:06:19 by ivanamoros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,7 @@ void	ft_index(t_stack **stack_a)
 {
 	t_stack	*first_temp;
 	t_stack	*second_temp;
-	int	i;
-
+	int		i;
 
 	first_temp = *stack_a;
 	while (first_temp)
@@ -49,7 +48,6 @@ void	ft_index(t_stack **stack_a)
 		}
 		first_temp = first_temp->next;
 	}
-
 }
 
 void	smallest_to_b(t_stack **stack_a, t_stack **stack_b)
@@ -72,7 +70,6 @@ void	smallest_to_b(t_stack **stack_a, t_stack **stack_b)
 			rra(stack_a);
 			smallest_position++;
 		}
-
 	}
 	pb(stack_a, stack_b);
 }
@@ -80,9 +77,9 @@ void	smallest_to_b(t_stack **stack_a, t_stack **stack_b)
 int	find_smallest(t_stack **stack)
 {
 	t_stack	*temp;
-	int smallest_position;
-	int position;
-	int temp_index;
+	int		smallest_position;
+	int		position;
+	int		temp_index;
 
 	temp = *stack;
 	position = 0;
@@ -95,9 +92,8 @@ int	find_smallest(t_stack **stack)
 			temp_index = temp->index;
 			smallest_position = position;
 		}
-
 		position++;
-		temp =temp->next;
+		temp = temp->next;
 	}
 	return (smallest_position);
 }
