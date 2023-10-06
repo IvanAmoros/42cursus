@@ -6,7 +6,7 @@
 /*   By: ivanamoros <ivanamoros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 20:11:14 by iamoros-          #+#    #+#             */
-/*   Updated: 2023/09/30 13:45:14 by ivanamoros       ###   ########.fr       */
+/*   Updated: 2023/10/05 14:52:12 by ivanamoros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	ft_sort(&stack_a, &stack_b);
-	print_stack("\nSTACK A:\n", &stack_a);
-	print_stack("\nSTACK B:\n", &stack_b);
+	//print_stack("\nSTACK A:\n", &stack_a);
+	//print_stack("\nSTACK B:\n", &stack_b);
 	free_stack(stack_a);
 	//free_stack(stack_b);
 	return (0);

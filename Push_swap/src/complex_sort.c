@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   complex_sort.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iamoros- <iamoros-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ivanamoros <ivanamoros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 21:25:04 by iamoros-          #+#    #+#             */
-/*   Updated: 2023/10/03 23:08:16 by iamoros-         ###   ########.fr       */
+/*   Updated: 2023/10/05 14:51:59 by ivanamoros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	hold_second_position(t_stack **stack, int to_chunk)
 	hold_second_tmp = 0;
 	while (tmp)
 	{
-		if (tmp->index <= to_chunk)
+		if (tmp->index < to_chunk)
 		{
 			hold_second_tmp = hold_second;
 		}
@@ -55,20 +55,28 @@ void	sort_100(t_stack **stack_a, t_stack **stack_b)
 	int	stack_size;
 	int	hold_first;
 	int	hold_second;
+	int	i;
 
 	stack_size = ft_lstsize_push_swap(*stack_a);
-	printf("FIRST CHUNK: %i\n\n", hold_first_position(stack_a, 19));
-	printf("LAST CHUNK: %i\n\n", hold_second_position(stack_a, 19));
+	i = 1;
+	while (ft_lstsize_push_swap(*stack_a) != 0)
+	{
+		while (hold_first_position(stack_a, 100 / 5 * i) != -1)
+		{
+			//printf("\n\nHOLD FIRST: %i", hold_first_position(stack_a, 100 / 5 * i));
+			//printf("\nHOLD SECOND: %i\n\n", ft_lstsize_push_swap(*stack_a) - hold_second_position(stack_a, 100 / 5 * i));
+			//sleep(1);
+			if (hold_first_position(stack_a, 100 / 5 * i) >= ft_lstsize_push_swap(*stack_a) - hold_second_position(stack_a, 100 / 5 * i) )
+				ra(stack_a);
+			else
+				rra(stack_a);
+			if (hold_first_position(stack_a, 100 / 5 * i) == 0)
+				pb(stack_a, stack_b);
+		}
+		i++;
+	}
 }
 
-	/*while (ft_lstsize_push_swap(*stack_a) != 0)
-	{
-		smallest_to_b(stack_a, stack_b);
-	}
-	while (ft_lstsize_push_swap(*stack_b) != 0)
-	{
-		pa(stack_a, stack_b);
-	}*/
 void	complex_sort(t_stack **stack_a, t_stack **stack_b)
 {
 	int	stack_size;
