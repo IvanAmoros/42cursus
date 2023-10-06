@@ -6,13 +6,13 @@
 /*   By: iamoros- <iamoros-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 21:25:04 by iamoros-          #+#    #+#             */
-/*   Updated: 2023/10/06 18:57:19 by iamoros-         ###   ########.fr       */
+/*   Updated: 2023/10/07 00:32:09 by iamoros-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	hold_first_position(t_stack **stack, int to_chunk)
+int	first_position(t_stack **stack, int to_chunk)
 {
 	t_stack	*tmp;
 	int		hold_first;
@@ -29,7 +29,7 @@ int	hold_first_position(t_stack **stack, int to_chunk)
 	return (-1);
 }
 
-int	hold_second_position(t_stack **stack, int to_chunk)
+int	second_position(t_stack **stack, int to_chunk)
 {
 	t_stack	*tmp;
 	int		hold_second;
@@ -56,7 +56,6 @@ int	first_a_smaller_first_b(t_stack *stack_a, t_stack *stack_b)
 	int		smaller_in_b;
 	int		first_b_smaller;
 
-	//sleep(1);
 	tmp = stack_a;
 	smaller_in_b = 0;
 	first_b_smaller = 0;
@@ -71,7 +70,6 @@ int	first_a_smaller_first_b(t_stack *stack_a, t_stack *stack_b)
 			}
 			tmp = tmp->next;
 		}
-		//printf("STACK A: %i\nSTACK B: %i\n", stack_b->value, stack_b->value);
 		if (stack_a->value < stack_b->value)
 			first_b_smaller = 1;
 	}
@@ -80,34 +78,74 @@ int	first_a_smaller_first_b(t_stack *stack_a, t_stack *stack_b)
 	return (0);
 }
 
-void	sort_100(t_stack **stack_a, t_stack **stack_b)
+int	find_biggest(t_stack *stack)
+{
+	int		position;
+	int		value_tmp;
+	t_stack	*tmp;
+
+	position = 0;
+	value_tmp = stack->value;
+	tmp = stack;
+	while (stack)
+	{
+		if (value_tmp < stack->value)
+			value_tmp = stack->value;
+		stack = stack->next;
+	}
+	while (tmp)
+	{
+		if (tmp->value == value_tmp)
+			return (position);
+		position++;
+		tmp = tmp->next;
+	}
+	return (0);
+}
+
+void	back_to_a(t_stack **stack_a, t_stack **stack_b)
+{
+	int	biggest_position;
+
+	while (ft_lstsize_push_swap(*stack_b) > 0)
+	{
+		biggest_position = find_biggest(*stack_b);
+		if (biggest_position == 0)
+			pa(stack_a, stack_b);
+		else if (biggest_position <= ft_lstsize_push_swap(*stack_b) / 2)
+			rb(stack_b);
+		else if (biggest_position > ft_lstsize_push_swap(*stack_b) / 2)
+			rrb(stack_b);
+	}
+}
+
+void	sort(t_stack **stack_a, t_stack **stack_b)
 {
 	int	stack_size;
-	int	hold_first;
-	int	hold_second;
 	int	i;
 
 	stack_size = ft_lstsize_push_swap(*stack_a);
 	i = 1;
 	while (ft_lstsize_push_swap(*stack_a) != 0)
 	{
-		while (hold_first_position(stack_a, 100 / 5 * i) != -1)
+		while (first_position(stack_a, 100 / 5 * i) != -1)
 		{
-			if (hold_first_position(stack_a, 100 / 5 * i) >= ft_lstsize_push_swap(*stack_a) - hold_second_position(stack_a, 100 / 5 * i))
+			if (first_position(stack_a, 100 / 5 * i)
+			>= ft_lstsize_push_swap(*stack_a)
+			- second_position(stack_a, 100 / 5 * i))
 				ra(stack_a);
 			else
 				rra(stack_a);
-			if (hold_first_position(stack_a, 100 / 5 * i) == 0)
+			if (first_position(stack_a, 100 / 5 * i) == 0)
 			{
 				pb(stack_a, stack_b);
-				//printf("NUMEROO; %i\n", (100 / 5 * i) - 10);
-				//printf("INDICE; %i\n", (*stack_b)->index);
 				if ((*stack_b)->index < (100 / 5 * i) - 10 && i != 1)
 					rb(stack_b);
 			}
 		}
 		i++;
 	}
+	back_to_a(stack_a, stack_b);
 }
 
 void	complex_sort(t_stack **stack_a, t_stack **stack_b)
@@ -115,8 +153,8 @@ void	complex_sort(t_stack **stack_a, t_stack **stack_b)
 	int	stack_size;
 
 	stack_size = ft_lstsize_push_swap(*stack_a);
-	if (stack_size <= 100)
+	if (stack_size >= 100)
 	{
-		sort_100(stack_a, stack_b);
+		sort(stack_a, stack_b);
 	}
 }
