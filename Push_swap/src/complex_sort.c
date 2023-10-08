@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   complex_sort.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iamoros- <iamoros-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ivanamoros <ivanamoros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 21:25:04 by iamoros-          #+#    #+#             */
-/*   Updated: 2023/10/07 00:32:09 by iamoros-         ###   ########.fr       */
+/*   Updated: 2023/10/08 16:47:36 by ivanamoros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,27 +80,26 @@ int	first_a_smaller_first_b(t_stack *stack_a, t_stack *stack_b)
 
 int	find_biggest(t_stack *stack)
 {
-	int		position;
-	int		value_tmp;
 	t_stack	*tmp;
+	int		max_position;
+	int		current_position;
+	int		max_value;
 
-	position = 0;
-	value_tmp = stack->value;
 	tmp = stack;
-	while (stack)
-	{
-		if (value_tmp < stack->value)
-			value_tmp = stack->value;
-		stack = stack->next;
-	}
+	max_position = 0;
+	current_position = 0;
+	max_value = stack->value;
 	while (tmp)
 	{
-		if (tmp->value == value_tmp)
-			return (position);
-		position++;
+		if (tmp->value > max_value)
+		{
+			max_value = tmp->value;
+			max_position = current_position;
+		}
+		current_position++;
 		tmp = tmp->next;
 	}
-	return (0);
+	return (max_position);
 }
 
 void	back_to_a(t_stack **stack_a, t_stack **stack_b)
@@ -116,10 +115,14 @@ void	back_to_a(t_stack **stack_a, t_stack **stack_b)
 			rb(stack_b);
 		else if (biggest_position > ft_lstsize_push_swap(*stack_b) / 2)
 			rrb(stack_b);
+		if (second_biggest(stack_b) == 1)
+		{
+
+		}
 	}
 }
 
-void	sort(t_stack **stack_a, t_stack **stack_b)
+void	sort(t_stack **stack_a, t_stack **stack_b, int chunk)
 {
 	int	stack_size;
 	int	i;
@@ -128,18 +131,18 @@ void	sort(t_stack **stack_a, t_stack **stack_b)
 	i = 1;
 	while (ft_lstsize_push_swap(*stack_a) != 0)
 	{
-		while (first_position(stack_a, 100 / 5 * i) != -1)
+		while (first_position(stack_a, chunk * i) != -1)
 		{
-			if (first_position(stack_a, 100 / 5 * i)
-			>= ft_lstsize_push_swap(*stack_a)
-			- second_position(stack_a, 100 / 5 * i))
+			if (first_position(stack_a, chunk * i)
+				>= ft_lstsize_push_swap(*stack_a)
+				- second_position(stack_a, chunk * i))
 				ra(stack_a);
 			else
 				rra(stack_a);
-			if (first_position(stack_a, 100 / 5 * i) == 0)
+			if (first_position(stack_a, chunk * i) == 0)
 			{
 				pb(stack_a, stack_b);
-				if ((*stack_b)->index < (100 / 5 * i) - 10 && i != 1)
+				if ((*stack_b)->index < (chunk * i) - (chunk / 2) && i != 1)
 					rb(stack_b);
 			}
 		}
@@ -153,8 +156,8 @@ void	complex_sort(t_stack **stack_a, t_stack **stack_b)
 	int	stack_size;
 
 	stack_size = ft_lstsize_push_swap(*stack_a);
-	if (stack_size >= 100)
-	{
-		sort(stack_a, stack_b);
-	}
+	if (stack_size <= 100)
+		sort(stack_a, stack_b, 20);
+	else
+		sort(stack_a, stack_b, 62);
 }
