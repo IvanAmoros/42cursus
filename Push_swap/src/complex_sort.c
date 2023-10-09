@@ -6,7 +6,7 @@
 /*   By: iamoros- <iamoros-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 21:25:04 by iamoros-          #+#    #+#             */
-/*   Updated: 2023/10/09 21:21:22 by iamoros-         ###   ########.fr       */
+/*   Updated: 2023/10/09 23:02:08 by iamoros-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	first_a_smaller_first_b(t_stack *stack_a, t_stack *stack_b)
 	return (0);
 }
 
-int	find_biggest_index(t_stack *stack)
+int	find_big_ind(t_stack *stack)
 {
 	int		max_index;
 	int		max_value;
@@ -59,34 +59,31 @@ int	find_biggest_index(t_stack *stack)
 	return (max_index);
 }
 
-void	back_to_a(t_stack **stack_a, t_stack **stack_b)
+void	back_to_a(t_stack **stak_a, t_stack **stak_b, int big_pos, int big_ind)
 {
-	int	biggest_position;
-	int	biggest_index;
-
-	while (ft_lstsize_push_swap(*stack_b) > 0)
+	while (ft_lstsize_push_swap(*stak_b) > 0)
 	{
-		biggest_position = find_biggest(*stack_b);
-		biggest_index = find_biggest_index(*stack_b);
-		if (biggest_position == 0 || (*stack_b)->index == biggest_index - 1
-			|| (*stack_b)->index == biggest_index - 2)
+		big_pos = find_biggest(*stak_b);
+		big_ind = find_big_ind(*stak_b);
+		if (big_pos == 0 || (*stak_b)->index == big_ind - 1
+			|| (*stak_b)->index == big_ind - 2)
 		{
-			pa(stack_a, stack_b);
-			if ((*stack_a)->index == biggest_index - 2)
-				ra(stack_a);
-			if (biggest_position == 0)
+			pa(stak_a, stak_b);
+			if ((*stak_a)->index == big_ind - 2)
+				ra(stak_a);
+			if (big_pos == 0)
 			{
-				if (ft_lstsize_push_swap(*stack_a) > 1 && (*stack_a)->index
-					== (*stack_a)->next->index + 1)
-					sa(stack_a);
-				if (ft_lstlast_push_swap((*stack_a))->index < (*stack_a)->index)
-					rra(stack_a);
+				if (ft_lstsize_push_swap(*stak_a) > 1 && (*stak_a)->index
+					== (*stak_a)->next->index + 1)
+					sa(stak_a);
+				if (ft_lstlast_push_swap((*stak_a))->index < (*stak_a)->index)
+					rra(stak_a);
 			}
 		}
-		else if (biggest_position <= ft_lstsize_push_swap(*stack_b) / 2)
-			rb(stack_b);
-		else if (biggest_position > ft_lstsize_push_swap(*stack_b) / 2)
-			rrb(stack_b);
+		else if (big_pos <= ft_lstsize_push_swap(*stak_b) / 2)
+			rb(stak_b);
+		else if (big_pos > ft_lstsize_push_swap(*stak_b) / 2)
+			rrb(stak_b);
 	}
 }
 
@@ -98,7 +95,7 @@ void	sort(t_stack **stack_a, t_stack **stack_b, int chunk)
 
 	stack_size = ft_lstsize_push_swap(*stack_a);
 	i = 1;
-	biggest = find_biggest_index((*stack_a));
+	biggest = find_big_ind((*stack_a));
 	while (ft_lstsize_push_swap(*stack_a) > 1)
 	{
 		while (first_position(stack_a, chunk * i) != -1)
@@ -114,9 +111,8 @@ void	sort(t_stack **stack_a, t_stack **stack_b, int chunk)
 		}
 		i++;
 	}
-	back_to_a(stack_a, stack_b);
+	back_to_a(stack_a, stack_b, 0, 0);
 }
-
 
 void	complex_sort(t_stack **stack_a, t_stack **stack_b)
 {
