@@ -6,7 +6,7 @@
 /*   By: iamoros- <iamoros-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 16:51:47 by iamoros-          #+#    #+#             */
-/*   Updated: 2023/10/08 17:13:48 by iamoros-         ###   ########.fr       */
+/*   Updated: 2023/10/09 21:22:57 by iamoros-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,25 +51,4 @@ int	first_position(t_stack **stack, int to_chunk)
 		tmp = tmp->next;
 	}
 	return (-1);
-}
-
-int	second_position(t_stack **stack, int to_chunk)
-{
-	t_stack	*tmp;
-	int		hold_second;
-	int		hold_second_tmp;
-
-	tmp = *stack;
-	hold_second = 0;
-	hold_second_tmp = 0;
-	while (tmp)
-	{
-		if (tmp->index < to_chunk)
-		{
-			hold_second_tmp = hold_second;
-		}
-		hold_second++;
-		tmp = tmp->next;
-	}
-	return (hold_second - 1);
 }

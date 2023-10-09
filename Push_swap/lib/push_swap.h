@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ivanamoros <ivanamoros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: iamoros- <iamoros-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 17:44:24 by iamoros-          #+#    #+#             */
-/*   Updated: 2023/10/09 14:46:32 by ivanamoros       ###   ########.fr       */
+/*   Updated: 2023/10/09 21:23:12 by iamoros-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,5 @@ void	smallest_to_b(t_stack **stack_a, t_stack **stack_b);
 void	complex_sort(t_stack **stack_a, t_stack **stack_b);
 int		find_biggest(t_stack *stack);
 int		first_position(t_stack **stack, int to_chunk);
-int		second_position(t_stack **stack, int to_chunk);
-void	sort_3(t_stack **stack_a);
 
 #endif

@@ -6,13 +6,13 @@
 /*   By: iamoros- <iamoros-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 20:11:14 by iamoros-          #+#    #+#             */
-/*   Updated: 2023/10/08 19:56:15 by iamoros-         ###   ########.fr       */
+/*   Updated: 2023/10/09 21:23:39 by iamoros-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_init_stack(int argc, char **argv, t_stack **stack_a)
+static	int	ft_init_stack(int argc, char **argv, t_stack **stack_a)
 {
 	t_stack	*tmp;
 
@@ -30,22 +30,12 @@ int	ft_init_stack(int argc, char **argv, t_stack **stack_a)
 	return (0);
 }
 
-static void	ft_sort(t_stack **stack_a, t_stack **stack_b)
+static	void	ft_sort(t_stack **stack_a, t_stack **stack_b)
 {
 	if (ft_lstsize_push_swap(*stack_a) <= 5)
 		simple_sort(stack_a, stack_b);
 	else
 		complex_sort(stack_a, stack_b);
-}
-
-void	print_stack(char *tittle, t_stack *stack)
-{
-	write(1, tittle, ft_strlen(tittle));
-	while (stack != NULL)
-	{
-		//printf("Value: %i Index: %i\n", stack->value, stack->index);
-		stack = stack->next;
-	}
 }
 
 int	main(int argc, char **argv)
@@ -65,9 +55,6 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	ft_sort(&stack_a, &stack_b);
-	//print_stack("\nSTACK A:\n", stack_a);
-	//print_stack("\nSTACK B:\n", &stack_b);
 	free_stack(stack_a);
-	//free_stack(stack_b);
 	return (0);
 }
