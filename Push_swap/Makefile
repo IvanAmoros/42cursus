@@ -12,11 +12,12 @@ SRC =	src/push_swap.c \
 		src/rotate.c \
 		src/reverse_rotate.c \
 		src/simple_sort.c \
+		src/complex_sort.c\
 		utils/check_args.c \
 		utils/error.c \
 		utils/utils.c \
 		utils/stack_functions.c \
-		src/complex_sort.c
+		utils/sort_utils.c
 
 OBJ_DIR = obj/
 

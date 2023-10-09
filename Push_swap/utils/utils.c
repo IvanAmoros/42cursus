@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ivanamoros <ivanamoros@student.42.fr>      +#+  +:+       +#+        */
+/*   By: iamoros- <iamoros-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 20:25:28 by ivanamoros        #+#    #+#             */
-/*   Updated: 2023/10/02 14:06:19 by ivanamoros       ###   ########.fr       */
+/*   Updated: 2023/10/08 17:13:55 by iamoros-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,30 +50,6 @@ void	ft_index(t_stack **stack_a)
 	}
 }
 
-void	smallest_to_b(t_stack **stack_a, t_stack **stack_b)
-{
-	int		smallest_position;
-
-	smallest_position = find_smallest(stack_a);
-	if (smallest_position <= ft_lstsize_push_swap(*stack_a) / 2)
-	{
-		while (smallest_position != 0)
-		{
-			ra(stack_a);
-			smallest_position--;
-		}
-	}
-	else
-	{
-		while (smallest_position != ft_lstsize_push_swap(*stack_a))
-		{
-			rra(stack_a);
-			smallest_position++;
-		}
-	}
-	pb(stack_a, stack_b);
-}
-
 int	find_smallest(t_stack **stack)
 {
 	t_stack	*temp;
@@ -96,4 +72,28 @@ int	find_smallest(t_stack **stack)
 		temp = temp->next;
 	}
 	return (smallest_position);
+}
+
+int	find_biggest(t_stack *stack)
+{
+	t_stack	*tmp;
+	int		max_position;
+	int		current_position;
+	int		max_value;
+
+	tmp = stack;
+	max_position = 0;
+	current_position = 0;
+	max_value = stack->value;
+	while (tmp)
+	{
+		if (tmp->value > max_value)
+		{
+			max_value = tmp->value;
+			max_position = current_position;
+		}
+		current_position++;
+		tmp = tmp->next;
+	}
+	return (max_position);
 }

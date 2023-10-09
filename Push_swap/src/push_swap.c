@@ -6,7 +6,7 @@
 /*   By: iamoros- <iamoros-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 20:11:14 by iamoros-          #+#    #+#             */
-/*   Updated: 2023/10/06 22:55:25 by iamoros-         ###   ########.fr       */
+/*   Updated: 2023/10/08 19:56:15 by iamoros-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,13 @@ static void	ft_sort(t_stack **stack_a, t_stack **stack_b)
 		complex_sort(stack_a, stack_b);
 }
 
-void	print_stack(char *tittle, t_stack **stack)
+void	print_stack(char *tittle, t_stack *stack)
 {
-	t_stack	*tmp_elem_a;
-
-	tmp_elem_a = *stack;
 	write(1, tittle, ft_strlen(tittle));
-	while (tmp_elem_a != NULL)
+	while (stack != NULL)
 	{
-		printf("Value: %i Index: %i\n", tmp_elem_a->value, tmp_elem_a->index);
-		tmp_elem_a = tmp_elem_a->next;
+		//printf("Value: %i Index: %i\n", stack->value, stack->index);
+		stack = stack->next;
 	}
 }
 
@@ -68,7 +65,7 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	ft_sort(&stack_a, &stack_b);
-	//print_stack("\nSTACK A:\n", &stack_a);
+	//print_stack("\nSTACK A:\n", stack_a);
 	//print_stack("\nSTACK B:\n", &stack_b);
 	free_stack(stack_a);
 	//free_stack(stack_b);
