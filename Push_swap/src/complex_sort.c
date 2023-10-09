@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   complex_sort.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iamoros- <iamoros-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ivanamoros <ivanamoros@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 21:25:04 by iamoros-          #+#    #+#             */
-/*   Updated: 2023/10/08 20:33:54 by iamoros-         ###   ########.fr       */
+/*   Updated: 2023/10/09 15:00:08 by ivanamoros       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,9 +105,9 @@ void	sort(t_stack **stack_a, t_stack **stack_b, int chunk)
 
 	stack_size = ft_lstsize_push_swap(*stack_a);
 	i = 1;
-	while (ft_lstsize_push_swap(*stack_a) != 0)
+	while (ft_lstsize_push_swap(*stack_a) > 3)
 	{
-		while (first_position(stack_a, chunk * i) != -1)
+		while (first_position(stack_a, chunk * i) != -1 && ft_lstsize_push_swap(*stack_a) > 3)
 		{
 			if (first_position(stack_a, chunk * i)
 				>= ft_lstsize_push_swap(*stack_a)
@@ -115,15 +115,19 @@ void	sort(t_stack **stack_a, t_stack **stack_b, int chunk)
 				ra(stack_a);
 			else
 				rra(stack_a);
-			if (first_position(stack_a, chunk * i) == 0)
+			if (ft_lstsize_push_swap(*stack_a) > 3 && first_position(stack_a, chunk * i) == 0)
 			{
-				pb(stack_a, stack_b);
+				if (find_biggest_index((*stack_a)) != (*stack_a)->index || find_biggest_index((*stack_a)) != (*stack_a)->index - 1 || find_biggest_index((*stack_a)) != (*stack_a)->index - 2)
+					pb(stack_a, stack_b);
+				else
+					break ;
 				if ((*stack_b)->index < (chunk * i) - (chunk / 2) && i != 1)
 					rb(stack_b);
 			}
 		}
 		i++;
 	}
+	sort_3(stack_a);
 	back_to_a(stack_a, stack_b);
 }
 
