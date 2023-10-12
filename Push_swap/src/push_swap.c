@@ -6,7 +6,7 @@
 /*   By: iamoros- <iamoros-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 20:11:14 by iamoros-          #+#    #+#             */
-/*   Updated: 2023/10/09 21:23:39 by iamoros-         ###   ########.fr       */
+/*   Updated: 2023/10/12 21:41:15 by iamoros-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static	int	ft_init_stack(int argc, char **argv, t_stack **stack_a)
 	{
 		tmp = malloc(sizeof(t_stack));
 		if (!tmp)
-			return (0);
+			return (-1);
 		tmp->value = ft_atoi(argv[argc - 1]);
 		tmp->next = *stack_a;
 		*stack_a = tmp;

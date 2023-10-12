@@ -1,48 +1,65 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: iamoros- <iamoros-@student.42barcel>       +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/05/10 13:36:17 by iamoros-          #+#    #+#              #
-#    Updated: 2022/06/23 20:47:22 by iamoros-         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+# Compiler
+CC = cc
 
+# Name of the library
 NAME = libftprintf.a
+
+# Source files
 SRC = ft_printf.c \
-	Functions/ft_character.c \
-	Functions/ft_printpercent.c \
-	Functions/ft_checkpercent.c \
-	Functions/ft_putnbr.c \
-	Functions/ft_printstr.c \
-	Functions/ft_unsputnbr.c \
-	Functions/ft_printhexa.c \
-	Functions/ft_pointers.c
-OBJ = $(SRC:.c=.o)
-DEPS = $(SRC:.c=.d)
-HEAD = ft_printf.h
+	src/ft_character.c \
+	src/ft_printpercent.c \
+	src/ft_checkpercent.c \
+	src/ft_putnbr.c \
+	src/ft_printstr.c \
+	src/ft_unsputnbr.c \
+	src/ft_printhexa.c \
+	src/ft_pointers.c
+
+# Object directory
+OBJ_DIR = obj/
+
+# Object files
+OBJ = $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
+
+# Dependency files
+DEPS = $(OBJ:.o=.d)
+
+# Compilation flags
 CFLAGS = -Wall -Werror -Wextra -MMD
 
-%.o : %.c 
-	$(CC) $(CFLAGS) -I ./ -c $< -o $@
+# Include path
+INC = -I./
 
+# Default rule - this is executed when `make` is run without arguments
 all: $(NAME)
 
--include $(DEPS)
+# Rule to create object files
+$(OBJ_DIR)%.o: %.c Makefile
+	@mkdir -p $(@D)
+	$(CC) $(CFLAGS) $(INC) -c $< -o $@
+
+# Rule to create the library
 $(NAME): $(OBJ)
-	ar -crs $@ $(OBJ)
+	ar rcs $@ $^
 
+# Rule to clean the build
 clean:
-	@$(RM) $(OBJ) 
-	@$(RM) $(DEPS)
-	@echo You have cleaned all the .o/.d
+	$(RM) $(OBJ) $(DEPS)
+	@echo "You have cleaned all the .o and .d files"
 
+# Rule to fully clean the build
 fclean: clean
-	@$(RM) $(NAME)
-	@echo and also .a
+	$(RM) -r $(OBJ_DIR)
+	@echo "Cleaned the object directory and also .a files"
 
+# Rule to re-build everything
 re: fclean all
 
+# Include the dependency files
+-include $(DEPS)
+
+# Declare phony targets
 .PHONY: all clean fclean re
+
+# Disable built-in rules
+.SUFFIXES:

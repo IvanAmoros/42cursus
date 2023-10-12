@@ -6,7 +6,7 @@
 /*   By: iamoros- <iamoros-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 01:04:46 by ivanamoros        #+#    #+#             */
-/*   Updated: 2023/10/09 22:52:19 by iamoros-         ###   ########.fr       */
+/*   Updated: 2023/10/12 20:08:09 by iamoros-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	stack_error(t_stack *stack_a, t_stack *stack_b)
 	{
 		free_stack(stack_b);
 	}
-	ft_error("Error");
+	ft_error("Error\n");
 }
 
 void	free_stack(t_stack *stack)
