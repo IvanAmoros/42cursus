@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iamoros- <iamoros-@student.42barcel>       +#+  +:+       +#+        */
+/*   By: iamoros- <iamoros-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 21:28:25 by iamoros-          #+#    #+#             */
-/*   Updated: 2022/05/29 19:35:36 by iamoros-         ###   ########.fr       */
+/*   Updated: 2023/10/08 17:06:50 by iamoros-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static int	ft_fill(char const *s, char **str, size_t w, char c)
 		{
 			ft_free(str, x);
 			return (-1);
-		}	
+		}
 		x++;
 	}
 	return (x);

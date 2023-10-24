@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iamoros- <iamoros-@student.42barcel>       +#+  +:+       +#+        */
+/*   By: iamoros- <iamoros-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 19:30:43 by iamoros-          #+#    #+#             */
-/*   Updated: 2022/05/15 21:17:17 by iamoros-         ###   ########.fr       */
+/*   Updated: 2023/10/09 22:53:31 by iamoros-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	{
 		if (str1[i] != str2[i])
 			return (((unsigned char *)s1)[i] - ((unsigned char *)s2)[i]);
-	i++;
+		i++;
 	}
 	return (0);
 }
