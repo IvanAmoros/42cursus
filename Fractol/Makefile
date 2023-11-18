@@ -1,14 +1,16 @@
 # Target executable name
-NAME = fractol
+NAME =	fractol
 
 # Makefile
-MKF = Makefile
+MKF =	Makefile
 
 # Source files
-SRC = src/main.c
+SRC =	src/main.c \
+		src/flags.c
 
 # Utility source file
-UTILS = src/utils/window.c
+UTILS = src/utils/window.c \
+		src/utils/initialize.c
 
 # Source directories
 SRC_DIR = src/
