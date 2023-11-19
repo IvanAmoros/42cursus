@@ -3,5 +3,10 @@
 *.o
 *.out
 *.a
-visualizer
 obj
+
+# Ignore Pushswap visualizer file
+visualizer
+
+# Ignore fractol binary file
+Fractol/fractol
