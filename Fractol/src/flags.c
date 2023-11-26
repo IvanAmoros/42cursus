@@ -6,11 +6,12 @@
 /*   By: iamoros- <iamoros-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 17:10:01 by iamoros-          #+#    #+#             */
-/*   Updated: 2023/11/18 21:42:22 by iamoros-         ###   ########.fr       */
+/*   Updated: 2023/11/26 19:31:35 by iamoros-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+#include "libft.h"
 
 void	brazilian(t_win windows, t_img *image)
 {
@@ -22,7 +23,7 @@ void	brazilian(t_win windows, t_img *image)
 	int	condition1;
 	int	condition2;
 
-	printf("BRAZILIAN FLAG DISPLAYED!\n");
+	ft_printf("BRAZILIAN FLAG DISPLAYED!\n");
 	w = 0;
 	h = 0;
 	mid_h = windows.height / 2;
@@ -56,7 +57,7 @@ void	barcelona(t_win windows, t_img *image)
 	int	h;
 	int	franja;
 
-	printf("BARÇA FLAG DISPLAYED!\n");
+	ft_printf("BARÇA FLAG DISPLAYED!\n");
 	w = 0;
 	h = 0;
 	franja = windows.width / 7;
@@ -83,7 +84,7 @@ void	portuguese(t_win windows, t_img *image)
 	int	h;
 	int	franja;
 
-	printf("PORTUGUESE FLAG DISPLAYED!\n");
+	ft_printf("PORTUGUESE FLAG DISPLAYED!\n");
 	w = 0;
 	h = 0;
 	franja = windows.width / 3;

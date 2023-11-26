@@ -6,11 +6,29 @@
 /*   By: iamoros- <iamoros-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 22:45:26 by iamoros-          #+#    #+#             */
-/*   Updated: 2023/11/18 22:26:16 by iamoros-         ###   ########.fr       */
+/*   Updated: 2023/11/19 18:37:49 by iamoros-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+int	error(int error)
+{
+	if (error == 1)
+	{
+		write(2, "\033[0;91mWrong input\033[0;39m\n", 27);
+		ft_printf("\nCORRECT USE OF FRACTOL PROGRAM\n\n");
+		ft_printf("make\n\n");
+		ft_printf("./fractol Mandelbrot\n\n");
+		ft_printf("./fractol Julia\n\n");
+		ft_printf("./fractol Other\n\n");
+	}
+	else if (error == 2)
+	{
+		write(2, "\033[0;91mUnexpected error\033[0;39m\n", 31);
+	}
+	return (1);
+}
 
 t_win	new_program(int w, int h, char *str)
 {
@@ -30,15 +48,14 @@ void	my_mlx_pixel_put(t_img *data, int x, int y, int color)
 
 int	key_hook(int key, t_fractol *fractol)
 {
-	printf("\nHello from key_hook! %d\n", key);
-
+	ft_printf("\nHello from key_hook! %d\n", key);
 	if (key == 53)
 	{
 		if (fractol->win.mlx_ptr && fractol->img.img_ptr)
 			mlx_destroy_image(fractol->win.mlx_ptr, fractol->img.img_ptr);
 		if (fractol->win.mlx_ptr && fractol->win.win_ptr)
 			mlx_destroy_window(fractol->win.mlx_ptr, fractol->win.win_ptr);
-		printf("END OF FRACTOL\n");
+		ft_printf("END OF FRACTOL\n");
 		exit(0);
 	}
 	else if (key == 11)

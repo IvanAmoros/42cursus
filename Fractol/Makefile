@@ -12,9 +12,13 @@ SRC =	src/main.c \
 UTILS = src/utils/window.c \
 		src/utils/initialize.c
 
+# Utility source file
+FRACTALS = src/fractals/mandelbrot.c
+
 # Source directories
 SRC_DIR = src/
 UTILS_DIR = utils/
+FRAC_DIR = fractals/
 OBJ_DIR = obj/
 
 # Header files
@@ -28,10 +32,12 @@ DIR_HEDS = inc/headers
 # Object files
 OBJ_SRC = $(SRC:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
 OBJ_UTILS = $(UTILS:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
+OBJ_FRAC = $(FRACTALS:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
 
 # Dependency files
 ALL_DEPS = $(SRC:$(SRC_DIR)%.c=$(OBJ_DIR)%.d)
 ALL_DEPS += $(UTILS:$(SRC_DIR)%.c=$(OBJ_DIR)%.d)
+ALL_DEPS += $(FRACTALS:$(SRC_DIR)%.c=$(OBJ_DIR)%.d)
 
 # Library files
 LIBFT = inc/Libft/libft.a
@@ -40,8 +46,8 @@ MLX = inc/mlx/libmlx.a
 MAKE_MLX = inc/mlx
 
 # Compiler and flags
-GCC = gcc -O3
-FLAGS = -Wall -Werror -Wextra -MMD -MP -I$(DIR_HEDS)
+CC = cc
+CFLAGS = -O3 -Wall -Werror -Wextra -MMD -MP -I$(DIR_HEDS) -I$(MAKE_LIBFT)
 
 # Compiler and linker flags for MiniLibX
 MINILIBXCC := -I mlx -L $(DIR_MLX) -lmlx
@@ -73,8 +79,8 @@ re: fclean all
 reall: fcleanall all
 
 # Rule to link the executable
-$(NAME): $(OBJ_SRC) $(OBJ_UTILS)
-	@$(GCC) $(FLAGS) $^ $(LIBFT) $(MINILIBXCC) $(OPENGL) -o $@
+$(NAME): $(OBJ_SRC) $(OBJ_UTILS) $(OBJ_FRAC)
+	@$(CC) $(CFLAGS) $^ $(LIBFT) $(MINILIBXCC) $(OPENGL) -o $@
 
 # Phony target to build libraries
 $(LIBFT):
@@ -85,7 +91,10 @@ $(MLX):
 # Rule to build object files from source files and utility files
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(MKF) $(HEADER_FRAC)
 	@mkdir -p $(@D)
-	@$(GCC) $(FLAGS) -I$(DIR_HEDS) -c $< -o $@
+	@$(CC) $(CFLAGS) -I$(DIR_HEDS) -c $< -o $@
+
+# Phony targets
+.PHONY: all clean fclean fcleanall re reall
 
 # Include dependency files
 -include $(ALL_DEPS)
