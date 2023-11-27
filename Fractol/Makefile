@@ -13,7 +13,8 @@ UTILS = src/utils/window.c \
 		src/utils/initialize.c
 
 # Utility source file
-FRACTALS = src/fractals/mandelbrot.c
+FRACTALS =	src/fractals/mandelbrot.c \
+			src/fractals/julia.c
 
 # Source directories
 SRC_DIR = src/

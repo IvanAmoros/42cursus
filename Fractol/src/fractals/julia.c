@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbrot.c                                       :+:      :+:    :+:   */
+/*   julia.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iamoros- <iamoros-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/26 19:16:27 by iamoros-          #+#    #+#             */
-/*   Updated: 2023/11/27 20:32:09 by iamoros-         ###   ########.fr       */
+/*   Created: 2023/11/27 19:22:11 by iamoros-          #+#    #+#             */
+/*   Updated: 2023/11/27 20:32:01 by iamoros-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ static void	function(t_fractol fractol, int pix_x, int pix_y)
 
 	x_re = ((3.00 / fractol.win.width) * (float)pix_x) - 2.00;
 	x_im = ((2.00 / fractol.win.height) * (float)pix_y) - 1.00;
-	x = 0.0;
-	y = 0.0;
+	x = x_re;
+	y = x_im;
 	iter = 0;
 	max_iter = 50;
 	while (((x * x) + (y * y)) <= 4 && iter < max_iter)
 	{
-		x_temp = (x * x) - (y * y) + x_re;
-		y = 2 * x * y + x_im;
+		x_temp = (x * x) - (y * y) + 0.285;
+		y = 2 * x * y - 0.01;
 		x = x_temp;
 		iter++;
 	}
@@ -41,7 +41,7 @@ static void	function(t_fractol fractol, int pix_x, int pix_y)
 		my_mlx_pixel_put(&fractol.img, pix_x, pix_y, 0xFF0000);
 }
 
-void	mandelbrot(t_fractol fractol)
+void	julia(t_fractol fractol)
 {
 	int	x;
 	int	y;

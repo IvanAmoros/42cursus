@@ -6,7 +6,7 @@
 /*   By: iamoros- <iamoros-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 22:46:36 by iamoros-          #+#    #+#             */
-/*   Updated: 2023/11/26 19:17:23 by iamoros-         ###   ########.fr       */
+/*   Updated: 2023/11/27 19:59:45 by iamoros-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	barcelona(t_win windows, t_img *image);
 void	portuguese(t_win windows, t_img *image);
 int		check_args(int argc, char *argv);
 int		error(int error);
-void	ft_mandelbrot(t_fractol fractol);
+void	mandelbrot(t_fractol fractol);
+void	julia(t_fractol fractol);
 
 #endif

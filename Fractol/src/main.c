@@ -6,7 +6,7 @@
 /*   By: iamoros- <iamoros-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 20:25:37 by iamoros-          #+#    #+#             */
-/*   Updated: 2023/11/26 19:57:18 by iamoros-         ###   ########.fr       */
+/*   Updated: 2023/11/27 19:21:49 by iamoros-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,9 @@ static int	fractol(char *argv)
 	fractol.img.w = fractol.win.width;
 	fractol.img.h = fractol.win.width;
 	if (!ft_strncmp(argv, "mandelbrot", ft_strlen(argv)))
-		ft_mandelbrot(fractol);
+		mandelbrot(fractol);
+	else if (!ft_strncmp(argv, "julia", ft_strlen(argv)))
+		julia(fractol);
 	mlx_key_hook(fractol.win.win_ptr, key_hook, &fractol);
 	mlx_loop(fractol.win.mlx_ptr);
 	return (0);
