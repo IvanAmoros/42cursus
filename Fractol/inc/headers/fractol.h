@@ -6,7 +6,7 @@
 /*   By: iamoros- <iamoros-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 22:46:36 by iamoros-          #+#    #+#             */
-/*   Updated: 2023/11/27 19:59:45 by iamoros-         ###   ########.fr       */
+/*   Updated: 2023/12/11 22:46:15 by iamoros-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_fractol
 {
 	t_win	win;
 	t_img	img;
+	char	*argv;
 }		t_fractol;
 
 t_win	new_program(int w, int h, char *str);

@@ -6,17 +6,17 @@
 /*   By: iamoros- <iamoros-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 20:25:37 by iamoros-          #+#    #+#             */
-/*   Updated: 2023/11/27 19:21:49 by iamoros-         ###   ########.fr       */
+/*   Updated: 2023/12/11 23:14:49 by iamoros-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-#include <stdio.h>
 
 static int	fractol(char *argv)
 {
 	t_fractol	fractol;
 
+	fractol.argv = argv;
 	fractol.win = new_program(1920, 1080, "Fractol");
 	if (!fractol.win.mlx_ptr || !fractol.win.win_ptr)
 		return (1);
