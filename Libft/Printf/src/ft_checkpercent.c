@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_checkpercent.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iamoros- <iamoros-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iamoros- <iamoros-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/13 17:05:50 by iamoros-          #+#    #+#             */
-/*   Updated: 2023/11/19 12:49:32 by iamoros-         ###   ########.fr       */
+/*   Created: 2022/06/02 00:25:31 by iamoros-          #+#    #+#             */
+/*   Updated: 2022/06/15 19:02:24 by iamoros-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,32 +32,4 @@ void	ft_checkpercent(char chstr, int *size, va_list args)
 		ft_printhexa(size, va_arg(args, unsigned int), "0123456789ABCDEF");
 	else if (chstr == '%')
 		ft_printpercent(size, chstr);
-}
-
-int	ft_printf(char const *str, ...)
-{
-	int		i;
-	int		size;
-	va_list	args;
-
-	i = 0;
-	size = 0;
-	va_start(args, str);
-	while (str[i])
-	{
-		while (str[i] == '%')
-		{
-			i += 2;
-			ft_checkpercent(str[i - 1], &size, args);
-			if (size == -1)
-				return (-1);
-		}
-		if (str[i] == '\0')
-			return (size);
-		if (write(1, &str[i], 1) != 1)
-			return (-1);
-		size++;
-		i++;
-	}
-	return (size);
 }

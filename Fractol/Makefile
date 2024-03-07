@@ -5,11 +5,14 @@ NAME =	fractol
 MKF =	Makefile
 
 # Source files
-SRC =	src/main.c \
-		src/flags.c
+SRC =	src/main.c
 
 # Utility source file
 UTILS = src/utils/window.c \
+		src/utils/ft_atof.c \
+		src/utils/colors.c \
+		src/utils/mouse_hooks.c \
+		src/utils/key_hooks.c \
 		src/utils/initialize.c
 
 # Utility source file
@@ -81,7 +84,7 @@ reall: fcleanall all
 
 # Rule to link the executable
 $(NAME): $(OBJ_SRC) $(OBJ_UTILS) $(OBJ_FRAC)
-	@$(CC) $(CFLAGS) $^ $(LIBFT) $(MINILIBXCC) $(OPENGL) -o $@
+	$(CC) $(CFLAGS) $^ $(LIBFT) $(MINILIBXCC) $(OPENGL) -o $@
 
 # Phony target to build libraries
 $(LIBFT):
@@ -92,7 +95,7 @@ $(MLX):
 # Rule to build object files from source files and utility files
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(MKF) $(HEADER_FRAC)
 	@mkdir -p $(@D)
-	@$(CC) $(CFLAGS) -I$(DIR_HEDS) -c $< -o $@
+	$(CC) $(CFLAGS) -I$(DIR_HEDS) -c $< -o $@
 
 # Phony targets
 .PHONY: all clean fclean fcleanall re reall

@@ -6,7 +6,7 @@
 /*   By: iamoros- <iamoros-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 19:22:11 by iamoros-          #+#    #+#             */
-/*   Updated: 2023/11/27 20:32:01 by iamoros-         ###   ########.fr       */
+/*   Updated: 2024/03/07 21:14:49 by iamoros-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,24 @@
 
 static void	function(t_fractol fractol, int pix_x, int pix_y)
 {
-	int		iter;
-	int		max_iter;
 	float	x;
 	float	y;
-	float	x_re;
-	float	x_im;
+	int		iter;
 	float	x_temp;
 
-	x_re = ((3.00 / fractol.win.width) * (float)pix_x) - 2.00;
-	x_im = ((2.00 / fractol.win.height) * (float)pix_y) - 1.00;
-	x = x_re;
-	y = x_im;
 	iter = 0;
-	max_iter = 50;
-	while (((x * x) + (y * y)) <= 4 && iter < max_iter)
+	x = (((fractol.val.max_x - fractol.val.min_x) / fractol.win.width)
+			* (float)pix_x) + fractol.val.min_x;
+	y = (((fractol.val.max_y - fractol.val.min_y) / fractol.win.height)
+			* (float)pix_y) + fractol.val.min_y;
+	while (((x * x) + (y * y)) <= 4 && iter < fractol.val.iter)
 	{
-		x_temp = (x * x) - (y * y) + 0.285;
-		y = 2 * x * y - 0.01;
+		x_temp = (x * x) - (y * y) + fractol.val.j_r;
+		y = 2 * x * y + fractol.val.j_i;
 		x = x_temp;
 		iter++;
 	}
-	if (iter == max_iter)
-		my_mlx_pixel_put(&fractol.img, pix_x, pix_y, 0x000000);
-	else
-		my_mlx_pixel_put(&fractol.img, pix_x, pix_y, 0xFF0000);
+	color_grad(&fractol, iter, pix_x, pix_y);
 }
 
 void	julia(t_fractol fractol)
@@ -48,6 +41,7 @@ void	julia(t_fractol fractol)
 
 	x = 0;
 	y = 0;
+	fractol.val.iter = 50 * log10(fractol.val.zoom + 10);
 	while (y < fractol.win.height)
 	{
 		while (x < fractol.win.width)
@@ -58,5 +52,6 @@ void	julia(t_fractol fractol)
 		x = 0;
 		y++;
 	}
-	mlx_put_image_to_window(fractol.win.mlx_ptr, fractol.win.win_ptr, fractol.img.img_ptr, 0, 0);
+	mlx_put_image_to_window(fractol.win.mlx_ptr, fractol.win.win_ptr,
+		fractol.img.img_ptr, 0, 0);
 }

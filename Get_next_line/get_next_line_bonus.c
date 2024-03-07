@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iamoros- <iamoros-@student.42barcel>       +#+  +:+       +#+        */
+/*   By: iamoros- <iamoros-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 20:32:40 by iamoros-          #+#    #+#             */
-/*   Updated: 2022/07/06 14:30:34 by iamoros-         ###   ########.fr       */
+/*   Updated: 2023/11/19 12:39:45 by iamoros-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,8 @@ char	*fill_storage(int fd, char *storage)
 		}
 		if (end > 0)
 		{
-		buffer[end] = '\0';
-		storage = ft_strjoin(storage, buffer);
+			buffer[end] = '\0';
+			storage = ft_strjoin(storage, buffer);
 		}
 	}
 	free(buffer);
