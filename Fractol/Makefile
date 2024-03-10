@@ -54,7 +54,7 @@ CC = cc
 CFLAGS = -O3 -Wall -Werror -Wextra -MMD -MP -I$(DIR_HEDS) -I$(MAKE_LIBFT)
 
 # Compiler and linker flags for MiniLibX
-MINILIBXCC := -I mlx -L $(DIR_MLX) -lmlx
+MINILIBXCC := -I $(DIR_MLX) -L $(DIR_MLX) -lmlx
 
 # Linker flags for OpenGL and AppKit frameworks
 OPENGL := -framework OpenGL -framework AppKit
@@ -95,7 +95,7 @@ $(MLX):
 # Rule to build object files from source files and utility files
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(MKF) $(HEADER_FRAC)
 	@mkdir -p $(@D)
-	$(CC) $(CFLAGS) -I$(DIR_HEDS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 # Phony targets
 .PHONY: all clean fclean fcleanall re reall
